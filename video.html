@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hilke Brockmann - Video</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+        }
+
+        /* =========================================
+           HEADER
+           ========================================= */
+        header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-left: -300px;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav ul.main-nav {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+            margin-right: 30px;
+        }
+
+        nav ul.main-nav > li {
+            position: relative;
+            padding: 10px 0;
+        }
+
+        nav ul.main-nav > li > a {
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #111;
+            display: inline-block;
+        }
+
+        nav ul.main-nav > li > a:hover,
+        nav ul.main-nav > li > a.active {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: -10px;
+            background-color: #fff;
+            min-width: 220px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            border-top: 2px solid #000;
+            display: none;
+            flex-direction: column;
+            gap: 0;
+            z-index: 999;
+        }
+
+        nav ul.main-nav > li:hover .dropdown-menu {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dropdown-menu li {
+            padding: 0;
+            margin: 0;
+            display: block;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 8px 20px;
+            font-size: 12px;
+            text-transform: capitalize;
+            color: #555;
+            font-weight: 400;
+            letter-spacing: 0;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f5f5f5;
+            color: #000;
+            text-decoration: none;
+        }
+
+        .header-social-icons {
+            display: flex;
+            gap: 15px;
+            margin-right: -300px;
+        }
+
+        .header-social-icons i {
+            font-size: 20px;
+            color: #111;
+            cursor: pointer;
+        }
+
+        .header-divider {
+            border: 0;
+            border-top: 1px solid #ddd;
+            margin-bottom: 35px;
+            width: 100%;
+        }
+
+        /* =========================================
+           MAIN CONTENT
+           ========================================= */
+        .main-container {
+            max-width: 1550px;
+            margin: 0 auto;
+            padding: 0 40px 80px 40px;
+            flex: 1;
+            width: 100%;
+        }
+
+        h1.page-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 44px;
+            font-weight: 400;
+            margin-bottom: 35px;
+            color: #111;
+        }
+
+        .video-section {
+            max-width: 1500px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px 28px;
+        }
+
+        .video-item {
+            width: 100%;
+        }
+
+        .video-frame {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+        footer {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 60px 40px 40px 40px;
+            font-size: 14px;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-columns {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+            text-align: left;
+            align-items: start;
+        }
+
+        footer h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+            margin-top: 25px;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .column > h4:first-child {
+            margin-top: 0;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer li {
+            margin-bottom: 8px;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #a0a0a0;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        footer a:hover {
+            color: #ffffff;
+            border-bottom: 1px solid #ffffff;
+        }
+
+        .footer-social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .footer-social-links a {
+            font-size: 18px;
+            border-bottom: none;
+        }
+
+        .footer-social-links a:hover {
+            border-bottom: none;
+            color: #fff;
+        }
+
+        .footer-divider {
+            border: 0;
+            border-top: 1px solid #f2eeee;
+            margin-bottom: 30px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: #f8f7f7;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .email-link {
+            display: inline-block;
+            margin-bottom: 13px;
+            color: #fff;
+            text-decoration: underline;
+            border-bottom: none;
+        }
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+        @media (max-width: 1200px) {
+            .logo {
+                margin-left: 0;
+            }
+
+            .header-social-icons {
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 900px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-wrapper {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul.main-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-columns {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border-top: none;
+                border-left: 1px solid #eee;
+                padding-left: 15px;
+                display: none;
+            }
+
+            nav ul.main-nav > li:hover .dropdown-menu {
+                display: block;
+            }
+
+            h1.page-title {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-columns {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-social-links {
+                justify-content: center;
+            }
+
+            h1.page-title {
+                font-size: 30px;
+            }
+
+            .main-container {
+                padding: 0 20px 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Hilke Brockmann</div>
+        <div class="nav-wrapper">
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="#">Books</a></li>
+                    <li><a href="video.html" class="active">Video</a></li>
+
+                    <li>
+                        <a href="#">Research</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="research-interest.html">Research Interests</a></li>
+                            <li><a href="#">Aging &amp; Well-Being</a></li>
+                            <li><a href="#">Inequality &amp; Migration</a></li>
+                            <li><a href="publications.html">Publications</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#">Leadership</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Teaching</a></li>
+                            <li><a href="#">Public Speaking</a></li>
+                            <li><a href="commentary.html">Commentary</a></li>
+                            <li><a href="phd-students.html">PhD Students</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#">Entrepreneurship</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Projects</a></li>
+                            <li><a href="#">Workshops</a></li>
+                            <li><a href="#">Advising</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#">Media</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="video.html">Video</a></li>
+                            <li><a href="#">TV</a></li>
+                            <li><a href="#">Print</a></li>
+                            <li><a href="#">Audio</a></li>
+                            <li><a href="commentary.html">Commentary</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#">Subscribe</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-social-icons">
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-youtube"></i>
+                <i class="fab fa-linkedin-in"></i>
+            </div>
+        </div>
+    </header>
+
+    <hr class="header-divider">
+
+    <div class="main-container">
+        <h1 class="page-title">Video</h1>
+
+        <section class="video-section">
+            <div class="video-grid">
+                <div class="video-item">
+                    <div class="video-frame">
+                        <iframe
+                            src="https://www.youtube.com/embed/t3sqKl2YxZs"
+                            title="Video 1"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <div class="video-item">
+                    <div class="video-frame">
+                        <iframe
+                            src="https://www.youtube.com/embed/rzXXDoIzq18"
+                            title="Video 2"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <div class="video-item">
+                    <div class="video-frame">
+                        <iframe
+                            src="https://www.youtube.com/embed/vBPhjcPxFPc"
+                            title="Video 3"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                  
+
+                      <div class="video-item">
+                    <div class="video-frame">
+                        <iframe
+                            src="https://www.youtube.com/embed/vjL_Zn0T0dY"
+                            title="Video 4"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                   <div class="video-item">
+                    <div class="video-frame">
+                        <iframe
+                            src="https://www.youtube.com/embed/KouAFbGPc_w"
+                            title="Video 5"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    </div>
+
+                <div class="video-item">
+                    <div class="video-frame">
+                        <iframe
+                            src="https://www.youtube.com/embed/EvP7dggwvX0"
+                            title="Video 6"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-columns">
+
+                <div class="column">
+                    <h4>Bio</h4>
+                    <ul><li><a href="about.html">Who Is Hilke</a></li></ul>
+
+                    <h4>Books</h4>
+                    <ul><li><a href="#">Books &amp; Chapters</a></li></ul>
+
+                    <h4>Research</h4>
+                    <ul>
+                        <li><a href="research-interest.html">Research Interests</a></li>
+                        <li><a href="#">Aging &amp; Well-Being</a></li>
+                        <li><a href="#">Inequality &amp; Migration</a></li>
+                        <li><a href="publications.html">Publications</a></li>
+                    </ul>
+                </div>
+
+                <div class="column">
+                    <h4>Leadership</h4>
+                    <ul>
+                        <li><a href="#">Teaching</a></li>
+                        <li><a href="#">Public Speaking</a></li>
+                        <li><a href="commentary.html">Commentary</a></li>
+                        <li><a href="phd-students.html">PhD Students</a></li>
+                    </ul>
+                </div>
+
+                <div class="column">
+                    <h4>Projects</h4>
+                    <ul>
+                        <li><a href="#">Workshops</a></li>
+                        <li><a href="#">Collaborations</a></li>
+                        <li><a href="#">Advising</a></li>
+                    </ul>
+                </div>
+
+                <div class="column">
+                    <h4>Media</h4>
+                    <ul>
+                        <li><a href="video.html">Video</a></li>
+                        <li><a href="#">TV</a></li>
+                        <li><a href="#">Print</a></li>
+                        <li><a href="#">Audio</a></li>
+                        <li><a href="commentary.html">Commentary</a></li>
+                    </ul>
+                </div>
+
+                <div class="column">
+                    <h4>Follow Hilke</h4>
+                    <div class="footer-social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.linkedin.com/in/hilkebrockmann/?originalSubdomain=de"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr class="footer-divider">
+
+            <div class="footer-bottom">
+                <a href="#" class="email-link">Email Hilke</a>
+                <p>&copy; 2026 Hilke Brockmann | Designed &amp; developed by <a href="#">K Booysen</a></p>
+                <p>Homepage, top image of Hilke, photo credit:</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
