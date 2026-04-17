@@ -1,562 +1,515 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hilke Brockmann - About</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* =========================================
-           1. GLOBAL STYLES
-           ========================================= */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hilke Brockmann — Professor of Sociology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
 
-        body {
-            font-family: 'Lato', sans-serif;
-            color: #333;
-            line-height: 1.6;
-            background-color: #fff;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.2s ease;
-        }
-
-        /* =========================================
-           2. HEADER STYLES (With Dropdowns)
-           ========================================= */
-        header {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 25px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap; /* Allows wrapping on small screens */
-            width: 100%;
-            position: relative;
-            z-index: 1000; /* Ensures header is above other content */
-        }
-
-        .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-left: -300px; /* Slight left shift for visual balance */
-        }
-
-        .nav-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-
-        /* Main Nav List */
-        nav ul.main-nav {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-            margin: 0;
-            padding: 0;
-            margin-right: 30px;
-        }
-
-        /* Main Nav Items */
-        nav ul.main-nav > li {
-            position: relative; /* CRITICAL: Anchors the dropdown to this item */
-            padding: 10px 0; /* Add hit area for mouse */
-        }
-
-        /* Main Nav Links */
-        nav ul.main-nav > li > a {
-            font-size: 11px;
-            text-transform: uppercase;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            color: #111;
-            display: inline-block;
-        }
-
-        nav ul.main-nav > li > a:hover, 
-        nav ul.main-nav > li > a.active {
-            text-decoration: underline;
-            text-underline-offset: 4px;
-        }
-
-        /* --- DROPDOWN MENU STYLES --- */
-        
-        /* The Dropdown Box (Hidden by default) */
-        .dropdown-menu {
-            position: absolute;
-            top: 100%; /* Position right below the parent li */
-            left: -10px; /* Align slightly left */
-            background-color: #fff;
-            min-width: 220px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            padding: 15px 0;
-            border-top: 2px solid #000; /* Aesthetic accent */
-            display: none; /* Hide it */
-            flex-direction: column;
-            gap: 0;
-            z-index: 999;
-        }
-
-        /* Show Dropdown on Hover */
-        nav ul.main-nav > li:hover .dropdown-menu {
-            display: flex; /* Show it */
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Dropdown Items */
-        .dropdown-menu li {
-            padding: 0;
-            margin: 0;
-            display: block;
-        }
-
-        .dropdown-menu a {
-            display: block;
-            padding: 8px 20px;
-            font-size: 12px;
-            text-transform: capitalize; /* Sub-menus look better capitalized, not uppercase */
-            color: #555;
-            font-weight: 400;
-            letter-spacing: 0;
-        }
-
-        .dropdown-menu a:hover {
-            background-color: #f5f5f5;
-            color: #000;
-            text-decoration: none; /* No underline for sub-items */
-        }
-
-        /* --- End Dropdown Styles --- */
-
-        .header-social-icons {
-            display: flex;
-            gap: 15px;
-            margin-right: -300px;
-        }
-
-        .header-social-icons i {
-            font-size: 20px;
-            color: #111;
-            cursor: pointer;
-        }
-
-        .header-divider {
-            border: 0;
-            border-top: 1px solid #ddd;
-            margin-bottom: 40px;
-            width: 100%;
-        }
-
-        /* =========================================
-           3. MAIN CONTENT STYLES
-           ========================================= */
-        .main-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 40px;
-            flex: 1; 
-            width: 100%;
-            z-index: 1; /* Lower z-index so dropdown goes over it */
-        }
-
-        h1.page-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 32px;
-            font-weight: 400;
-            margin-bottom: 40px;
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: 260px 1fr;
-            gap: 20px;
-            margin-bottom: 80px;
-            align-items: start;
-        }
-
-        .profile-section img {
-            max-width: 260px;
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 2px;
-            margin-bottom: 25px;
-        }
-
-        .profile-titles {
-            text-align: center;
-            font-size: 20px;
-            line-height: 1.8;
-            color: #000;
-        }
-
-        .profile-titles p {
-            margin-bottom: 15px;
-        }
-
-        .bio-text {
-            font-size: 16.5px;
-            color: #444;
-            text-align: justify;
-            line-height: 1.8;
-            max-width: 650px;
-            margin-top: -5px;
-            padding-top: 0;
-        }
-
-        .bio-text p {
-            margin-bottom: 20px;
-        }
-
-        .bio-text a {
-            color: #3b7ea1;
-            text-decoration: underline;
-        }
-
-        .bio-text a:hover {
-            color: #2c5d77;
-        }
-
-        /* =========================================
-           4. CV BUTTON STYLES (Static - No Dropdowns)
-           ========================================= */
-            .cv-button {
-                display: inline-block;
-                margin-top: 10px;
-                padding: 6px 16px;
-                font-size: 18px;
-                font-family: 'Montserrat', sans-serif;
-                color: #fff;
-                text-decoration: none;
-                background-color: #2563eb;
-                border: 1px solid #2563eb;
-                border-radius: 5px;
-                transition: 0.3s ease;
+:root {
+  --bg:        #f3ece3;
+  --ink:       #2c2218;
+  --muted:     #7a6a58;
+  --accent:    #8b4c2f;
+  --rule:      #cbbfa8;
+  --card-bg:   #d9cbb7;
+  --warm-card: #d0c2ac;
+  --dark-bg:   #1e1b18;
+  --serif:     'EB Garamond', Georgia, serif;
+  --sans:      'Jost', system-ui, sans-serif;
 }
 
-            .cv-button:hover {
-                background-color: #1d4ed8;
-                border-color: #1d4ed8;
-                color: #fff;
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
 }
-    
 
-        /* =========================================
-           4. FOOTER STYLES (Static - No Dropdowns)
-           ========================================= */
-        footer {
-            background-color: #000000;
-            color: #ffffff;
-            padding: 60px 40px 40px 40px;
-            font-size: 14px;
-            width: 100%;
-            margin-top: auto; 
-        }
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .9rem 2.5rem;
+  background: rgba(226,213,195,.93);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-name {
+  font-family: var(--serif); font-size: 1rem; font-weight: 400;
+  color: var(--ink); text-decoration: none;
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: var(--sans); font-size: .7rem; font-weight: 500;
+  letter-spacing: .13em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none; transition: color .2s;
+}
+.nav-links a:hover { color: var(--ink); }
 
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+/* WRAP */
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
 
-        .footer-columns {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 30px;
-            margin-bottom: 60px;
-            text-align: left;
-            align-items: start;
-        }
+/* ABOUT */
+#about { padding: 9rem 0 5rem; }
+.about-grid {
+  display: grid; grid-template-columns: 1fr 340px;
+  gap: 5rem; align-items: start;
+}
+.about-label {
+  font-family: var(--sans); font-size: .68rem; font-weight: 500;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1.1rem;
+}
+.about-heading {
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 4vw, 3.8rem);
+  font-weight: 400; line-height: 1.1; margin-bottom: 1.6rem;
+}
+.about-heading em { font-style: italic; color: var(--accent); }
+.about-divider { width: 40px; height: 2px; background: var(--accent); margin-bottom: 1.8rem; }
+.about-bio { font-family: var(--serif); font-size: 1rem; line-height: 1.8; color: var(--ink); }
+.about-bio p + p { margin-top: 1.2rem; }
+.about-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 2.2rem; }
+.tag {
+  font-family: var(--sans); font-size: .73rem; font-weight: 400;
+  color: var(--muted); border: 1px solid var(--rule);
+  border-radius: 999px; padding: .3rem .9rem;
+}
+.about-right { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.hb-card {
+  width: 100%; aspect-ratio: 3/4;
+  background: #c9baa6;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+.hb-card img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  display: block;
+}
+.hb-card-placeholder {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 5.5rem; font-weight: 400;
+  color: #b5a898; letter-spacing: .05em; user-select: none;
+}
+.hb-caption {
+  font-family: var(--sans); font-size: .73rem;
+  color: var(--muted); text-align: center; line-height: 1.6;
+}
 
-        footer h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 15px;
-            margin-top: 25px;
-            font-weight: 500;
-            color: #fff;
-        }
+/* SECTION COMMONS */
+.section-sup {
+  font-family: var(--sans); font-size: .68rem; font-weight: 500;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: .7rem;
+}
+.section-title {
+  font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 400; line-height: 1.1; margin-bottom: 1.2rem;
+}
+.section-intro {
+  font-family: var(--serif); font-size: 1rem; line-height: 1.75;
+  color: var(--ink); max-width: 68ch; margin-bottom: 3.5rem;
+}
 
-        .column > h4:first-child {
-            margin-top: 0;
-        }
+/* PUBLICATIONS */
+#publications { padding: 5rem 0; border-top: 1px solid var(--rule); }
+.pub-item {
+  display: grid; grid-template-columns: 72px 1fr;
+  gap: 0 2.8rem; padding: 2.2rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.pub-item:first-child { border-top: 1px solid var(--rule); }
+.pub-year {
+  font-family: var(--sans); font-size: .82rem; font-weight: 400;
+  color: var(--accent); padding-top: .2rem; letter-spacing: .02em;
+}
+.pub-type {
+  font-family: var(--sans); font-size: .65rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: .45rem;
+}
+.pub-title {
+  font-family: var(--serif); font-size: 1.15rem; font-weight: 400;
+  line-height: 1.3; margin-bottom: .35rem;
+}
+.pub-venue {
+  font-family: var(--serif); font-style: italic;
+  font-size: .9rem; color: var(--muted); margin-bottom: .7rem;
+}
+.pub-blurb {
+  font-family: var(--serif); font-style: italic;
+  font-size: .88rem; line-height: 1.7; color: var(--muted);
+}
 
-        footer ul {
-            list-style: none;
-        }
+/* PROJECTS */
+#projects { padding: 5rem 0; border-top: 1px solid var(--rule); }
+.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.project-card {
+  background: var(--card-bg); border-radius: 6px;
+  padding: 2.2rem 2.2rem 2rem;
+  display: flex; flex-direction: column;
+}
+.project-card.warm { background: var(--warm-card); }
+.project-card-top {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: .9rem;
+}
+.project-theme {
+  font-family: var(--sans); font-size: .65rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+}
+.project-num {
+  font-family: var(--sans); font-size: .8rem; font-weight: 400;
+  color: #bab3ab; letter-spacing: .05em;
+}
+.project-title {
+  font-family: var(--serif); font-size: 1.2rem; font-weight: 400;
+  line-height: 1.25; margin-bottom: 1rem;
+}
+.project-desc {
+  font-family: var(--serif); font-size: .9rem;
+  line-height: 1.75; color: var(--ink); flex: 1;
+}
+.project-note {
+  margin-top: 1.3rem; padding-top: 1.1rem;
+  border-top: 1px solid rgba(0,0,0,.1);
+  font-family: var(--serif); font-size: .88rem;
+  line-height: 1.65; color: var(--ink);
+}
+.project-note strong { color: var(--accent); font-weight: 500; }
+.project-link {
+  display: inline-block; margin-top: .8rem;
+  font-family: var(--sans); font-size: .75rem; font-weight: 500;
+  letter-spacing: .05em; color: var(--accent); text-decoration: none;
+}
+.project-link:hover { text-decoration: underline; }
 
-        footer li {
-            margin-bottom: 8px;
-        }
+/* OUTREACH */
+#outreach { padding: 5rem 0 0; border-top: 1px solid var(--rule); }
+.outreach-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-bottom: 3rem; }
+.outreach-icon {
+  width: 36px; height: 36px; background: #ccc0ae;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.1rem;
+}
+.outreach-icon svg { width: 15px; height: 15px; stroke: var(--muted); fill: none; stroke-width: 1.5; }
+.outreach-heading { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; margin-bottom: .8rem; }
+.outreach-text { font-family: var(--serif); font-size: .9rem; line-height: 1.75; color: var(--ink); }
+.outreach-text em { font-style: italic; }
+.media-rule { border: none; border-top: 1px solid var(--rule); margin-bottom: 2rem; }
+.media-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 3rem; }
+.media-tag {
+  font-family: var(--sans); font-size: .73rem; color: var(--muted);
+  border: 1px solid var(--rule); border-radius: 999px; padding: .3rem .9rem;
+}
 
-        footer a {
-            text-decoration: none;
-            color: #a0a0a0; 
-            transition: all 0.3s ease;
-            border-bottom: 1px solid transparent;
-        }
+/* CONTACT BANNER */
+.contact-banner {
+  background: var(--dark-bg); border-radius: 6px;
+  padding: 2.4rem 2.8rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 2rem; margin-bottom: 4rem;
+}
+.contact-banner-title {
+  font-family: var(--sans); font-size: .88rem; font-weight: 500;
+  color: #f0ece4; margin-bottom: .4rem; letter-spacing: .01em;
+}
+.contact-banner-sub {
+  font-family: var(--serif); font-size: .88rem; color: #8a8278; line-height: 1.6;
+}
+.contact-banner-email {
+  font-family: var(--serif); font-size: 1rem; color: var(--accent);
+  text-decoration: none; white-space: nowrap; flex-shrink: 0;
+}
+.contact-banner-email:hover { text-decoration: underline; }
 
-        footer a:hover {
-            color: #ffffff; 
-            border-bottom: 1px solid #ffffff; 
-        }
+/* FOOTER */
+footer {
+  background: var(--dark-bg);
+  padding: 1.2rem 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-left, .footer-right {
+  font-family: var(--sans); font-size: .7rem; color: #5a554e; letter-spacing: .04em;
+}
 
-        .footer-social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
-        }
+/* SCROLL REVEAL */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity .55s ease, transform .55s ease; }
+.reveal.visible { opacity: 1; transform: none; }
 
-        .footer-social-links a {
-            font-size: 18px;
-            border-bottom: none;
-        }
-        
-        .footer-social-links a:hover {
-            border-bottom: none;
-            color: #fff;
-        }
-
-        .footer-divider {
-            border: 0;
-            border-top: 1px solid #f2eeee;
-            margin-bottom: 30px;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            color: #f8f7f7;
-            font-size: 15px;
-            line-height: 1.6;
-        }
-
-        .email-link {
-            display: inline-block;
-            margin-bottom: 13px;
-            color: #fff;
-            text-decoration: underline;
-            border-bottom: none;
-        }
-
-        /* =========================================
-           5. RESPONSIVE DESIGN
-           ========================================= */
-        @media (max-width: 900px) {
-            header { flex-direction: column; gap: 20px; }
-            .nav-wrapper { flex-direction: column; gap: 15px; }
-            nav ul.main-nav { flex-wrap: wrap; justify-content: center; }
-            .content-grid { grid-template-columns: 1fr; }
-            .profile-section { max-width: 400px; margin: 0 auto; }
-            .footer-columns { grid-template-columns: repeat(2, 1fr); }
-            
-            /* Hide dropdowns on mobile for simplicity in this demo, 
-               or make them position relative to stack */
-            .dropdown-menu {
-                position: static;
-                box-shadow: none;
-                border-top: none;
-                border-left: 1px solid #eee;
-                padding-left: 15px;
-                display: none; /* Keep hidden until hover/click */
-            }
-            nav ul.main-nav > li:hover .dropdown-menu {
-                display: block;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .footer-columns { grid-template-columns: 1fr; text-align: center; }
-            .footer-social-links { justify-content: center; }
-        }
-    </style>
+/* RESPONSIVE */
+@media (max-width: 860px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-right { display: none; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .outreach-cols { grid-template-columns: 1fr; gap: 2rem; }
+  .contact-banner { flex-direction: column; align-items: flex-start; }
+  .wrap { padding: 0 1.5rem; }
+  nav { padding: .9rem 1.5rem; }
+  .nav-links { gap: 1.4rem; }
+}
+</style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">Hilke Brockmann</div>
-        <div class="nav-wrapper">
-            <nav>
-                <ul class="main-nav">
-                    <li><a href="hilke.html" class="active">About</a></li>
-                    
-                    <li><a href="book.html">Books</a></li>
-                    
-                    <li><a href="video.html">Video</a></li>
-                    
-                    <li>
-                        <a href="#">Research</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="Research-Interests.html">Research Interests</a></li>
-                        
-                            <li><a href="publications.html">Publications</a></li>
-                        </ul>
-                    </li>
-                    
-                    <li>
-                        <a href="#">Leadership</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Teaching</a></li>
-                            <li><a href="#">Public Speaking</a></li>
-                            <li><a href="#">Opinion Pieces</a></li>
-                        </ul>
-                    </li>
-                    
-                    <li>
-                        <a href="#">Entrepreneurship</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Manifest Capital</a></li>
-                            <li><a href="#">Startups</a></li>
-                            <li><a href="#">Advising</a></li>
-                        </ul>
-                    </li>
-                    
-                    <li>
-                        <a href="#">Media</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Video</a></li>
-                            <li><a href="#">TV</a></li>
-                            <li><a href="#">Print</a></li>
-                            <li><a href="#">Audio</a></li>
-                            <li><a href="#">Instagram</a></li>
-                            <li><a href="commentary.html">Commentary</a></li>
-                        </ul>
-                    </li>
-                    
-                    <li><a href="#">Subscribe</a></li>
-                </ul>
-            </nav>
-            <div class="header-social-icons">
-                <i class="fab fa-twitter"></i>
-                <i class="fab fa-instagram"></i>
-                <i class="fab fa-youtube"></i>
-                <i class="fab fa-linkedin-in"></i>
-            </div>
+<nav>
+  <a href="#about" class="nav-name">Hilke Brockmann</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#outreach">Outreach</a></li>
+  </ul>
+</nav>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-left">
+        <p class="about-label">Professor of Sociology · Constructor University Bremen</p>
+        <h1 class="about-heading">Welcome<br>I am <em>Hilke<br>Brockmann</em></h1>
+        <div class="about-divider"></div>
+        <div class="about-bio">
+          <p>I study the questions that keep us up at night: Will I be happy? Will I be treated fairly? What happens when we grow old? And what does the digital revolution mean for all of us? As a sociologist, I approach these profoundly human concerns with rigorous empirical methods — and a genuine conviction that science should matter beyond the academy.</p>
+          <p>For over two decades I have been a professor at Constructor University Bremen, with research stays at Harvard, the European University Institute in Florence, and institutions across Africa and Asia. My work has tracked happiness trajectories across entire lifetimes, examined why immigrants often report higher wellbeing than the people around them, and revealed the hidden inequalities shaping women's careers. Most recently, I am pushing into new territory: using AI-assisted text analytics, digital trace data, and computational methods to understand how we age, how societies polarize, and how technology reshapes the way we live and feel.</p>
+          <p>Communicating research is not a side project — it is central to what I do. I collaborate across disciplines and continents, supervise a lively group of PhD students, and bring sociological thinking into public debate, policy conversations, and the media whenever I can.</p>
         </div>
-    </header>
-
-    <hr class="header-divider">
-
-    <div class="main-container">
-        <h1 class="page-title">About</h1>
-
-        <div class="content-grid">
-            
-            <div class="profile-section">
-                <img src="HB2023.jpg" alt="Hilke Brockmann">
-                <div class="profile-titles">
-                    <p>Hilke Brockmann<br> Professor of Sociology</p>
-                    <p>School of Business, Social &amp; Decision Sciences</p>
-                    <a href="CV_2026.pdf" class="cv-button" target="_blank">CV</a>
-                </div>
-            </div>
-
-            <div class="bio-text">
-                <p><strong>Hilke Brockmann</strong> has a multi-disciplinary background in the social sciences. Her research focuses on things that matter to people — aging, happiness, inequality, and new data.</p>
-
-                <p>She studies large social groups — the elderly, the educated and uneducated, the haves and the have-nots, migrants, and women. Drawing on new research methodologies, she explores the motives and behaviors of people and their (un)intended consequences.</p>
-
-                <p>She uses and combines innovative datasets and cutting-edge data science models to study when and why people are happy, what drives the (un)acceptance of economic inequalities, what defines successful migration, and how people can better participate politically.</p>
-            </div>
-
+        <div class="about-tags">
+          <span class="tag">Happiness &amp; Wellbeing</span>
+          <span class="tag">Aging Societies</span>
+          <span class="tag">Inequality</span>
+          <span class="tag">AI &amp; Digital Society</span>
+          <span class="tag">Immigration</span>
+          <span class="tag">End-of-Life</span>
+          <span class="tag">Computational Social Science</span>
         </div>
+      </div>
+      <div class="about-right">
+        <div class="hb-card">
+          <!-- Replace src with Brockmann's photo, e.g. src="brockmann.jpg" -->
+          <img src="HB2023.jpg" alt="Prof. Dr. Hilke Brockmann" id="profile-photo"
+               onerror="this.style.display='none'; document.getElementById('hb-fallback').style.display='flex';"
+               onload="document.getElementById('hb-fallback').style.display='none';" />
+          <div class="hb-card-placeholder" id="hb-fallback">HB</div>
+        </div>
+        <p class="hb-caption">Prof. Dr. Hilke Brockmann<br>Constructor University Bremen</p>
+      </div>
     </div>
+  </div>
+</section>
 
-    <footer>
-        <div class="footer-container">
-            
-            <div class="footer-columns">
-                
-                <div class="column">
-                    <h4>Bio</h4>
-                    <ul><li><a href="hilke.html">Who Is Hilke</a></li></ul>
-
-                    <h4>Books</h4>
-                    <ul><li><a href="book.html">Encyclopedia of Happiness, Quality of Life and Subjective Wellbeing</a></li></ul>
-
-                    <h4>Research</h4>
-                    <ul>
-                        <li><a href="Research_Interests.html">Research Interests</a></li>
-                        <li><a href="Publications.html">Publications</a></li>
-                    </ul>
-                </div>
-
-                <div class="column">
-                    <h4>Leadership</h4>
-                    <ul>
-                        <li><a href="#">Teaching</a></li>
-                        <li><a href="#">Public Speaking</a></li>
-                        <li><a href="#">Opinion Pieces</a></li>
-                    </ul>
-                </div>
-
-                <div class="column">
-                    <h4>Entrepreneurship</h4>
-                    <ul>
-                        <li><a href="#">Manifest Capital</a></li>
-                        <li><a href="#">Startups</a></li>
-                        <li><a href="#">Advising</a></li>
-                    </ul>
-                </div>
-
-                <div class="column">
-                    <h4>Multimedia</h4>
-                    <ul>
-                        <li><a href="video.html">Video</a></li>
-                        <li><a href="#">TV</a></li>
-                        <li><a href="#">Print</a></li>
-                        <li><a href="#">Audio</a></li>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="commentary.html">Commentary</a></li>
-                    </ul>
-                </div>
-
-                <div class="column">
-                    <h4>Follow Hilke</h4>
-                    <div class="footer-social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="https://www.linkedin.com/in/hilkebrockmann/?originalSubdomain=de"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-
-            </div>
-
-            <hr class="footer-divider">
-
-            <div class="footer-bottom">
-                <a href="#" class="email-link">Email Hilke</a>
-                <p>&copy; 2020 Hilke Brockmann | Designed & developed by <a href="#">K Booysen</a></p>
-                <p>Homepage, top image of Hilke, photo credit:</p>
-            </div>
-
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="wrap">
+    <p class="section-sup">Selected Publications</p>
+    <h2 class="section-title">Books &amp; Papers</h2>
+    <p class="section-intro">A curated selection of research across the themes of happiness, inequality, aging, and digital society — chosen for intellectual impact, originality, and accessibility.</p>
+    <div class="pub-list">
+      <div class="pub-item reveal">
+        <div class="pub-year">2026</div>
+        <div>
+          <p class="pub-type">Journal Article</p>
+          <p class="pub-title">Females Welcome! When immigrants make the local population happy</p>
+          <p class="pub-venue">Journal of Economic Psychology, 113 (with R. Fernandez-Urbano)</p>
+          <p class="pub-blurb">A striking finding: the arrival of immigrant women boosts subjective wellbeing in host communities. A genuinely surprising result that reframes public debates around migration and social cohesion.</p>
         </div>
-    </footer>
+      </div>
+      <div class="pub-item reveal">
+        <div class="pub-year">2025</div>
+        <div>
+          <p class="pub-type">Journal Article</p>
+          <p class="pub-title">The Pursuit of Happiness at the End of Life: Research on Connection, Care, and Meaning in Hospice Settings</p>
+          <p class="pub-venue">The Mind, 2</p>
+          <p class="pub-blurb">One of the first rigorous empirical studies of what actually makes people happy in their final months — an urgent question for aging societies everywhere. This paper opened a new research program.</p>
+        </div>
+      </div>
+      <div class="pub-item reveal">
+        <div class="pub-year">2024</div>
+        <div>
+          <p class="pub-type">Edited Volume</p>
+          <p class="pub-title">Encyclopedia of Happiness, Quality of Life, and Subjective Wellbeing</p>
+          <p class="pub-venue">Edward Elgar, Cheltenham (edited with R. Fernandez-Urbano)</p>
+          <p class="pub-blurb">The field's most comprehensive reference work — a landmark synthesis co-edited by Brockmann that brings together the world's leading scholars on wellbeing research. Essential for researchers, policymakers, and curious readers alike.</p>
+        </div>
+      </div>
+      <div class="pub-item reveal">
+        <div class="pub-year">2018</div>
+        <div>
+          <p class="pub-type">Journal Article</p>
+          <p class="pub-title">Why managerial women are less happy than managerial men</p>
+          <p class="pub-venue">Journal of Happiness Studies, 19/3: 755–779 (with A.M. Koch, A. Diederich, C. Edling)</p>
+          <p class="pub-blurb">A widely cited study that puts data behind a phenomenon many women recognize — and opens hard questions about the real costs of professional success. Accessible, provocative, and policy-relevant.</p>
+        </div>
+      </div>
+      <div class="pub-item reveal">
+        <div class="pub-year">2016</div>
+        <div>
+          <p class="pub-type">Journal Article</p>
+          <p class="pub-title">Happy taxation: Increasing tax compliance through positive rewards?</p>
+          <p class="pub-venue">Journal of Public Policy, 36/3: 381–406 (with L. Seelkopf, P. Genschel)</p>
+          <p class="pub-blurb">A beautifully unexpected research question — can reward-based nudges replace penalties in tax compliance? This paper bridges happiness research and public policy in a way that genuinely surprised policymakers.</p>
+        </div>
+      </div>
+      <div class="pub-item reveal">
+        <div class="pub-year">2013</div>
+        <div>
+          <p class="pub-type">Edited Volume</p>
+          <p class="pub-title">Is More Always Better? Human Happiness and the Pursuit of Maximization</p>
+          <p class="pub-venue">Springer, Heidelberg &amp; New York (edited with J. Delhey)</p>
+          <p class="pub-blurb">A thought-provoking interdisciplinary inquiry into the limits of "more is better" — from wealth to ambition to information. One of the books that established Brockmann as a leading voice in happiness research.</p>
+        </div>
+      </div>
+      <div class="pub-item reveal">
+        <div class="pub-year">2009</div>
+        <div>
+          <p class="pub-type">Journal Article</p>
+          <p class="pub-title">The China puzzle: Falling happiness in a rising economy</p>
+          <p class="pub-venue">Journal of Happiness Studies, 10: 387–405 (with J. Delhey, C. Welzel)</p>
+          <p class="pub-blurb">A landmark paper: economic growth does not automatically produce wellbeing. This counterintuitive finding for China resonated globally and remains one of the field's most-cited studies on the happiness–GDP paradox.</p>
+        </div>
+      </div>
+      <div class="pub-item reveal">
+        <div class="pub-year">2004</div>
+        <div>
+          <p class="pub-type">Journal Article</p>
+          <p class="pub-title">Love and death in Germany: The marital biography and its impact on mortality</p>
+          <p class="pub-venue">Journal of Marriage &amp; the Family, 66/3: 567–581 (with T. Klein)</p>
+          <p class="pub-blurb">An early, award-winning study using large longitudinal data to show that intimate relationships profoundly shape how long we live — still widely read, still cited, still important.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <p class="section-sup">Current Research</p>
+    <h2 class="section-title">Projects</h2>
+    <p class="section-intro">Four research programs — each tackling a question that matters to individuals and societies, and each pushing the boundaries of sociological methods.</p>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="project-card-top">
+          <span class="project-theme">Aging &amp; Wellbeing</span>
+          <span class="project-num">01</span>
+        </div>
+        <h3 class="project-title">Happiness at the End of Life</h3>
+        <p class="project-desc">What does happiness mean when life is drawing to a close — and how can societies help people experience dignity, connection, and meaning rather than fear? This project combines life-course survey data and administrative health records with digital trace data and NLP-based text analysis to map how emotional wellbeing, life satisfaction, and social relationships evolve in people's final years. In close collaboration with palliative-care clinicians, we translate findings directly into recommendations for end-of-life care and social support policy.</p>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-card-top">
+          <span class="project-theme">AI &amp; Society</span>
+          <span class="project-num">02</span>
+        </div>
+        <h3 class="project-title">Gender-Inclusive AI</h3>
+        <p class="project-desc">AI is not neutral — it reflects the values, priorities, and blind spots of the people who build it. Since women remain dramatically underrepresented in AI development, this project asks: What happens when female perspectives and care-oriented principles are designed into AI systems from the start? Using algorithmic auditing, survey experiments, and behavioral data, we test whether gender-inclusive design produces AI that works better for everyone. Embedded in an international collaboration spanning Estonia, France, and Sweden.</p>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-card-top">
+          <span class="project-theme">Immigration &amp; Integration</span>
+          <span class="project-num">03</span>
+        </div>
+        <h3 class="project-title">Technology, Integration, and Immigrant Wellbeing</h3>
+        <p class="project-desc">Can digital tools make integration faster, fairer, and more humane? This comparative project examines how AI-driven job matching, digital credential recognition, and e-government services affect immigrants' employment outcomes, occupational mobility, and subjective wellbeing — in Europe and, via an Australian collaboration, across radically different policy regimes. Using linked employer–employee datasets and machine-learning methods, we identify the technological conditions that genuinely support a better life after migration.</p>
+      </div>
+      <div class="project-card warm reveal">
+        <div class="project-card-top">
+          <span class="project-theme">Gender &amp; Career — Ongoing</span>
+          <span class="project-num">04</span>
+        </div>
+        <h3 class="project-title">Discrimination of Mothers: Career, Care, and the Motherhood Penalty</h3>
+        <p class="project-desc">Becoming a mother remains one of the most consequential career events a woman can experience — and one of the most consequential for her happiness. This long-running research program uses longitudinal data to trace how the transition to motherhood affects employment trajectories, earnings, wellbeing, and political representation. We document the structural mechanisms behind the "motherhood penalty" — and look for the policies and workplace cultures that actually make a difference.</p>
+        <div class="project-note">
+          <strong>Are you a mother who has experienced career discrimination?</strong> I am always interested in hearing from women whose experiences can inform this research. Please feel free to reach out — your story matters.
+          <br/><a href="#outreach" class="project-link">Get in touch →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTREACH -->
+<section id="outreach">
+  <div class="wrap">
+    <p class="section-sup">Beyond the University</p>
+    <h2 class="section-title">Outreach &amp; Impact</h2>
+    <p class="section-intro">Good research deserves a wide audience. I actively bring sociological findings into public debate, policy advice, and the media — because the questions I study belong to everyone.</p>
+    <div class="outreach-cols">
+      <div class="outreach-col reveal">
+        <div class="outreach-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><line x1="7" y1="8" x2="17" y2="8"/><line x1="7" y1="12" x2="13" y2="12"/></svg>
+        </div>
+        <h3 class="outreach-heading">Media &amp; Public Debate</h3>
+        <p class="outreach-text">From the <em>Frankfurter Rundschau</em> to <em>Die ZEIT</em>, from the <em>Economist</em> to ZDF and ARTE, my research on happiness, inequality, and aging has reached hundreds of thousands of readers and viewers. I contribute a regular column to the <em>Frankfurter Rundschau</em> (Gastwirtschaft, since 2019), translate complex findings into language that resonates, and welcome journalists who want serious sociological perspective on the news.</p>
+      </div>
+      <div class="outreach-col reveal">
+        <div class="outreach-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M5 20c0-4 3.1-7 7-7s7 3 7 7"/></svg>
+        </div>
+        <h3 class="outreach-heading">Keynotes &amp; Public Lectures</h3>
+        <p class="outreach-text">I have given invited talks at Harvard's Center for European Studies, the European University Institute, McKinsey, the Sparkassenverband, and at the Studienstiftung des deutschen Volkes, among many others — as well as at international sociology conferences across North America, Europe, and Asia. My talks combine rigorous evidence with genuinely surprising findings, and are designed to spark conversation rather than close it down.</p>
+      </div>
+      <div class="outreach-col reveal">
+        <div class="outreach-icon">
+          <svg viewBox="0 0 24 24"><polygon points="12,4 21,20 3,20"/></svg>
+        </div>
+        <h3 class="outreach-heading">Policy Consulting &amp; Advisory</h3>
+        <p class="outreach-text">I have advised the Coca-Cola Happiness Institute in Berlin on the measurement and communication of wellbeing research, and contributed expert consultation to hospitals and healthcare organizations on quality assurance and age-related healthcare policy. I am a member of the editorial board of the <em>Journal of Happiness Studies</em> and a reviewer for leading journals in sociology, public health, and social policy.</p>
+      </div>
+    </div>
+    <hr class="media-rule"/>
+    <div class="media-tags">
+      <span class="media-tag">FAZ</span>
+      <span class="media-tag">Die ZEIT</span>
+      <span class="media-tag">Der Spiegel</span>
+      <span class="media-tag">Frankfurter Rundschau</span>
+      <span class="media-tag">The Economist</span>
+      <span class="media-tag">ZDF</span>
+      <span class="media-tag">ARD</span>
+      <span class="media-tag">ARTE</span>
+      <span class="media-tag">3sat</span>
+      <span class="media-tag">Deutschlandfunk</span>
+      <span class="media-tag">NDR</span>
+      <span class="media-tag">Radio Bremen</span>
+    </div>
+    <div class="contact-banner reveal">
+      <div>
+        <p class="contact-banner-title">Interested in collaborating, consulting, or inviting me to speak?</p>
+        <p class="contact-banner-sub">I welcome inquiries from researchers, journalists, organizations, and institutions — whether for a single conversation or a longer collaboration.</p>
+      </div>
+      <a href="mailto:hbrockmann@constructor-university.de" class="contact-banner-email">hbrockmann@constructor-university.de</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-left">Prof. Dr. Hilke Brockmann · Constructor University Bremen</span>
+  <span class="footer-right">+49 421 200 34 21</span>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), (e.target.dataset.i || 0) * 70);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal').forEach((el, i) => { el.dataset.i = i % 4; obs.observe(el); });
+</script>
 </body>
 </html>

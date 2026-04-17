@@ -1,0 +1,2060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hilke Brockmann — Sociologist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --gray-100: #f5f5f5;
+  --gray-200: #e8e8e8;
+  --gray-400: #a0a0a0;
+  --gray-600: #666666;
+  --gray-800: #222222;
+  --accent: #1a3a5c;
+  --accent-light: #e8f0f8;
+  --red-fr: #c8102e;
+  --gold: #c9a84c;
+  --green-new: #1a6641;
+  --green-light: #e8f5ee;
+  --nav-h: 60px;
+  --sans: 'Inter', system-ui, sans-serif;
+  --display: 'Playfair Display', Georgia, serif;
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+
+  --black:#0d0d0d;
+  --paper:#fcfcfb;
+  --gray-200:#e6e4df;
+  --gray-300:#d6d2cb;
+  --gray-400:#a6a097;
+  --gray-500:#7d766d;
+  --gray-700:#3b372f;
+  --accent:#163a63;
+  --accent-soft:#eef4fb;
+  --shadow-soft:0 10px 30px rgba(0,0,0,.05);
+  --display:'Playfair Display', Georgia, serif;
+
+}
+
+
+html { scroll-behavior: auto; }
+
+body {
+  font-family: var(--sans);
+  background: var(--white);
+  color: var(--black);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  background: rgba(255,255,255,0.97);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.nav-logo {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--black);
+  cursor: pointer;
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray-600);
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s;
+  padding-bottom: 2px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--black);
+  transition: width 0.25s var(--ease);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--black);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* PAGES */
+.page { display: none; }
+.page.active { display: block; }
+
+/* START */
+#page-start {
+  min-height: calc(100vh - var(--nav-h));
+  text-align: center;
+  background: var(--black);
+  overflow: hidden;
+  position: relative;
+}
+
+#page-start.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.start-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(26,58,92,0.5) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.start-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 0 32px;
+}
+
+.start-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+}
+
+.start-quote {
+  font-family: var(--display);
+  font-size: clamp(22px, 3.5vw, 38px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.start-quote-mark {
+  font-size: 1.4em;
+  color: var(--gold);
+  font-style: normal;
+  line-height: 0;
+  vertical-align: -0.15em;
+  margin-right: 4px;
+}
+
+.start-attribution {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.04em;
+  margin-bottom: 48px;
+}
+
+.start-attribution em {
+  color: rgba(255,255,255,0.6);
+}
+
+.start-rule {
+  width: 40px;
+  height: 1px;
+  background: rgba(255,255,255,0.2);
+  margin: 0 auto 32px;
+}
+
+.enter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 32px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 40px;
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.enter-btn:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.6);
+  transform: translateY(-2px);
+}
+
+.enter-btn svg {
+  width: 13px;
+  height: 13px;
+  transition: transform 0.2s;
+}
+
+.enter-btn:hover svg {
+  transform: translateX(3px);
+}
+
+#page-home{
+  background: var(--paper);
+}
+
+.hero{
+  display:grid;
+  grid-template-columns:minmax(0, 1.45fr) 340px;
+  border-bottom:1px solid var(--gray-200);
+  background:
+    radial-gradient(circle at 18% 14%, rgba(22,58,99,.05), transparent 22%),
+    linear-gradient(180deg, #ffffff 0%, #fbfbf9 100%);
+}
+
+.hero-left{
+  position:relative;
+  padding:40px 44px 34px 48px;
+  border-right:1px solid var(--gray-200);
+}
+
+.hero-left::before{
+  content:'';
+  position:absolute;
+  top:38px;
+  left:48px;
+  width:54px;
+  height:2px;
+  background:var(--accent);
+}
+
+.hero-inner{
+  max-width:700px;
+  padding-top:26px;
+}
+
+.hero-eyebrow{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:14px;
+}
+
+.hero-name{
+  font-family:var(--display);
+  font-size:clamp(52px, 6vw, 82px);
+  line-height:.93;
+  font-weight:900;
+  letter-spacing:-.035em;
+  color:var(--black);
+  margin-bottom:14px;
+}
+
+.hero-title{
+  font-size:18px;
+  font-weight:400;
+  color:var(--gray-500);
+  margin-bottom:24px;
+}
+
+.hero-bio{
+  font-size:17px;
+  line-height:1.78;
+  color:var(--gray-700);
+  max-width:690px;
+  margin-bottom:22px;
+  font-weight:400;
+}
+
+.hero-bio strong{
+  color:var(--black);
+  font-weight:600;
+}
+
+.hero-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:28px;
+}
+
+.hero-tag{
+  font-size:12px;
+  font-weight:500;
+  padding:8px 14px;
+  border:1px solid var(--gray-200);
+  border-radius:999px;
+  color:var(--gray-500);
+  background:rgba(255,255,255,.7);
+  transition:all .2s;
+}
+
+.hero-tag:hover{
+  border-color:rgba(22,58,99,.28);
+  color:var(--accent);
+  background:var(--accent-soft);
+}
+
+.hero-actions{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.hero-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 28px;
+  border-radius:999px;
+  border:none;
+  background:var(--black);
+  color:#fff;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:transform .2s, background .2s, box-shadow .2s;
+  box-shadow:0 8px 18px rgba(0,0,0,.12);
+}
+
+.hero-cta:hover{
+  background:var(--accent);
+  transform:translateY(-2px);
+}
+
+.hero-link{
+  font-size:13px;
+  font-weight:600;
+  color:var(--accent);
+  text-decoration:none;
+  letter-spacing:.03em;
+}
+
+.hero-right{
+  background:linear-gradient(180deg, #fafaf8 0%, #f4f2ee 100%);
+  display:flex;
+  flex-direction:column;
+}
+
+.hero-photo-area{
+  padding:34px 28px 24px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:330px;
+}
+
+.hero-photo-frame {
+  width: 240px;
+  height: 300px;
+  border-radius: 18px;
+  overflow: hidden;
+  margin: 0 auto;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.hero-photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-photo-placeholder{
+  font-family:var(--display);
+  font-size:56px;
+  font-weight:700;
+  color:#a8a29a;
+}
+
+.hero-photo-caption{
+  text-align:center;
+  font-size:12px;
+  font-weight:600;
+  color:var(--gray-500);
+  margin-top:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.hero-stats{
+  margin-top:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;
+  border-top:1px solid var(--gray-200);
+  background:rgba(255,255,255,.45);
+}
+
+.hero-stat{
+  padding:24px 24px 22px;
+}
+
+.hero-stat:nth-child(odd){
+  border-right:1px solid var(--gray-200);
+}
+
+.hero-stat:nth-child(-n+2){
+  border-bottom:1px solid var(--gray-200);
+}
+
+.hero-stat-num{
+  font-family:var(--display);
+  font-size:38px;
+  line-height:1;
+  letter-spacing:-.03em;
+  color:var(--black);
+  margin-bottom:8px;
+}
+
+.hero-stat-label{
+  font-size:11px;
+  font-weight:700;
+  color:var(--gray-400);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.section-nav{
+  display:grid;
+  grid-template-columns:repeat(6, 1fr);
+  background:#fff;
+}
+
+.section-nav-item{
+  position:relative;
+  padding:24px 22px 20px;
+  border-right:1px solid var(--gray-200);
+  text-decoration:none;
+  cursor:pointer;
+  transition:background .2s, transform .2s, box-shadow .2s;
+  min-height:112px;
+}
+
+.section-nav-item:last-child{
+  border-right:none;
+}
+
+.section-nav-item:hover{
+  background:linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow:inset 0 3px 0 var(--accent);
+}
+
+.section-nav-item::after{
+  content:'↗';
+  position:absolute;
+  right:16px;
+  top:16px;
+  font-size:14px;
+  color:var(--gray-300);
+  transition:transform .2s, color .2s;
+}
+
+.section-nav-item:hover::after{
+  transform:translate(2px, -2px);
+  color:var(--accent);
+}
+
+.sn-icon{
+  font-size:18px;
+  display:block;
+  margin-bottom:12px;
+}
+
+.sn-label{
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--black);
+  margin-bottom:4px;
+}
+
+.sn-desc{
+  font-size:13px;
+  color:var(--gray-400);
+  line-height:1.45;
+}
+
+@media (max-width: 1100px){
+  .section-nav{
+    grid-template-columns:repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px){
+  .hero{
+    grid-template-columns:1fr;
+  }
+
+  .hero-left{
+    border-right:none;
+    padding:28px 22px 28px;
+  }
+
+  .hero-left::before{
+    left:22px;
+    top:24px;
+  }
+
+  .hero-inner{
+    padding-top:18px;
+  }
+
+  .hero-name{
+    font-size:clamp(44px, 14vw, 66px);
+  }
+
+  .hero-bio{
+    font-size:16px;
+  }
+
+  .hero-right{
+    border-top:1px solid var(--gray-200);
+  }
+
+  .hero-photo-area{
+    min-height:auto;
+    padding:24px 20px 18px;
+  }
+
+  .hero-photo-shell{
+    max-width:180px;
+  }
+
+  .section-nav{
+    grid-template-columns:repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px){
+  .section-nav{
+    grid-template-columns:1fr;
+  }
+
+  .hero-actions{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .hero-stats{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+/* SECTION PAGES */
+.section-wrap {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 40px 48px 72px;
+}
+
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.section-head h2 {
+  font-family: var(--display);
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--black);
+}
+
+.section-count {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gray-400);
+  padding-bottom: 4px;
+}
+
+/* NEWS */
+.news-card {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.news-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 24px rgba(26,58,92,0.08);
+  transform: translateY(-3px);
+}
+
+.news-card-side {
+  background: var(--accent);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.news-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.news-date-big {
+  font-family: var(--display);
+  font-size: 36px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.15);
+  line-height: 1;
+}
+
+.news-date-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.6);
+  margin-top: 6px;
+}
+
+.news-card-body {
+  padding: 24px 28px;
+}
+
+.news-card-title {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--black);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.news-card-by {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.news-card-text {
+  font-size: 14px;
+  line-height: 1.72;
+  color: var(--gray-600);
+}
+
+.news-card-text p {
+  margin-bottom: 8px;
+}
+
+.news-card-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* RESEARCH */
+.research-bio-block {
+  background: var(--black);
+  border-radius: 12px;
+  padding: 32px 40px;
+  margin-bottom: 20px;
+}
+
+.research-bio-block p {
+  font-family: var(--display);
+  font-size: clamp(16px, 1.8vw, 21px);
+  font-style: italic;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.85);
+  max-width: 800px;
+}
+
+.research-bio-block p + p {
+  margin-top: 16px;
+}
+
+.research-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--gray-200);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.research-card {
+  background: var(--white);
+  padding: 28px 32px;
+  transition: background 0.2s;
+}
+
+.research-card:hover {
+  background: var(--gray-100);
+}
+
+.research-card-num {
+  font-family: var(--display);
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--gray-200);
+  line-height: 1;
+  margin-bottom: 10px;
+  letter-spacing: -0.03em;
+}
+
+.research-card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+
+.research-card-text {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--gray-600);
+  font-weight: 300;
+}
+
+/* PUBLICATIONS */
+.pub-section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  margin: 28px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.pub-section-label:first-of-type {
+  margin-top: 0;
+}
+
+.pub-card {
+  border: 1px solid var(--gray-200);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  background: var(--white);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.pub-card:hover {
+  border-color: var(--gray-400);
+  box-shadow: 0 3px 16px rgba(0,0,0,0.06);
+  transform: translateY(-1px);
+}
+
+.pub-card-inner {
+  padding: 20px 24px;
+}
+
+.pub-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.pub-badge {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 40px;
+  white-space: nowrap;
+}
+
+.badge-journal {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.badge-book {
+  background: #fdf3e0;
+  color: #8b5e14;
+}
+
+.badge-new {
+  background: var(--green-light);
+  color: var(--green-new);
+}
+
+.pub-journal {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gray-600);
+}
+
+.pub-year {
+  font-size: 11px;
+  color: var(--gray-400);
+  margin-left: auto;
+}
+
+.pub-title {
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--black);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+
+.pub-authors {
+  font-size: 12px;
+  color: var(--gray-400);
+  margin-bottom: 12px;
+}
+
+.abstract-toggle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.2s;
+}
+
+.abstract-toggle:hover {
+  gap: 10px;
+}
+
+.abstract-content {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--gray-200);
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--gray-600);
+  font-weight: 300;
+}
+
+.abstract-content.hidden {
+  display: none;
+}
+
+/* PEOPLE */
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.person-card {
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  padding: 28px;
+  background: var(--white);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.person-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 20px rgba(26,58,92,0.08);
+  transform: translateY(-2px);
+}
+
+.person-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+.person-name {
+  font-family: var(--display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 3px;
+  letter-spacing: -0.01em;
+}
+
+.person-role {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.person-topic {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--gray-600);
+  font-weight: 300;
+  margin-bottom: 14px;
+  font-style: italic;
+}
+
+.person-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: gap 0.2s;
+}
+
+.person-link:hover {
+  gap: 9px;
+
+}
+
+
+#page-people .section-wrap {
+  padding-bottom: 300px;
+}
+
+#page-people {
+  min-height: auto;
+}
+
+.people-intro {
+  max-width: 760px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--gray-600);
+  margin: 0 0 28px;
+}
+
+.people-subtitle {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  margin-bottom: 14px;
+}
+
+.person-card {
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  padding: 30px;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfbfb 100%);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.person-card:hover {
+  border-color: rgba(26,58,92,0.20);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+  transform: translateY(-3px);
+}
+
+.person-avatar {
+  width: 58px;
+  height: 58px;
+  font-size: 20px;
+  margin-bottom: 18px;
+}
+
+.person-name {
+  margin-bottom: 6px;
+}
+
+.person-role {
+  margin-bottom: 12px;
+}
+
+.person-meta {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.person-topic {
+  display: inline-block;
+  background: var(--gray-100);
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* TEACHING */
+.teaching-hero-box {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-soft);
+}
+
+.teaching-hero-box p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--gray-700);
+  margin: 0;
+}
+
+.teaching-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.teaching-card {
+  background: #fff;
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.teaching-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+  border-color: rgba(22,58,99,.22);
+}
+
+.teaching-card-number {
+  font-family: var(--display);
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--gray-300);
+  margin-bottom: 10px;
+}
+
+.teaching-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 10px;
+}
+
+.teaching-card p {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--gray-500);
+  margin: 0;
+}
+
+.teaching-student-box {
+  background: var(--accent-soft);
+  border: 1px solid rgba(22,58,99,.10);
+  border-radius: 16px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+}
+
+.teaching-student-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.teaching-student-box p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--gray-700);
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .teaching-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .teaching-hero-box,
+  .teaching-student-box,
+  .teaching-card {
+    padding: 20px;
+  }
+}
+
+
+/* MEDIA */
+.media-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 30px 32px;
+  margin-bottom: 28px;
+  border: 1px solid var(--gray-200);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at top left, rgba(26,58,92,0.08), transparent 35%),
+    linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+}
+
+.media-kicker {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.media-hero-title {
+  font-family: var(--display);
+  font-size: clamp(26px, 3vw, 40px);
+  line-height: 1.05;
+  margin-bottom: 12px;
+  color: var(--black);
+}
+
+.media-hero-text {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--gray-600);
+  max-width: 720px;
+}
+
+.media-hero-badge {
+  flex-shrink: 0;
+  text-align: center;
+  color: var(--gray-600);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.media-badge-circle {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+  background: linear-gradient(135deg, var(--red-fr), #e83b57);
+  color: white;
+  font-family: var(--display);
+  font-size: 24px;
+  font-weight: 700;
+  box-shadow: 0 10px 24px rgba(200,16,46,0.18);
+}
+
+.media-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(280px, 0.9fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.media-main,
+.media-side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.media-section {
+  margin-bottom: 0;
+}
+
+.media-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  margin-bottom: 14px;
+}
+
+.media-feature-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 26px 26px 22px;
+  border-radius: 18px;
+  border: 1px solid var(--gray-200);
+  background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.04);
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  margin-bottom: 18px;
+}
+
+.media-feature-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(200,16,46,0.25);
+  box-shadow: 0 18px 38px rgba(0,0,0,0.08);
+}
+
+.media-feature-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.fr-logo-box.large {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+.media-feature-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.media-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(200,16,46,0.08);
+  color: var(--red-fr);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.media-pill.light {
+  background: var(--gray-100);
+  color: var(--gray-600);
+}
+
+.media-feature-title {
+  font-family: var(--display);
+  font-size: 28px;
+  line-height: 1.2;
+  color: var(--black);
+  margin-bottom: 10px;
+}
+
+.media-feature-text {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--gray-600);
+  margin-bottom: 14px;
+  max-width: 760px;
+}
+
+.media-feature-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.03em;
+}
+
+.media-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.media-card-modern {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 20px;
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  background: white;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  min-height: 210px;
+}
+
+.media-card-modern:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+  border-color: var(--accent);
+}
+
+.media-card-modern.static:hover {
+  transform: none;
+  border-color: var(--gray-200);
+  box-shadow: none;
+}
+
+.media-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.media-card-tag {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gray-400);
+}
+
+.media-card-title-modern {
+  font-family: var(--display);
+  font-size: 22px;
+  line-height: 1.25;
+  color: var(--black);
+  margin-bottom: 10px;
+}
+
+.media-card-text-modern {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--gray-600);
+  max-width: 90%;
+}
+
+.media-card-arrow {
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+  font-size: 18px;
+  color: var(--gray-400);
+}
+
+.media-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--accent-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.media-topic-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.media-topic-list span {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--gray-100);
+  color: var(--gray-600);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.media-side-card {
+  padding: 22px 20px;
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfbfb 100%);
+}
+
+.media-side-text {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--gray-600);
+}
+
+.contact-card-modern {
+  background:
+    radial-gradient(circle at top right, rgba(26,58,92,0.07), transparent 35%),
+    linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
+}
+
+.contact-modern {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.contact-sub {
+  font-size: 13px;
+  color: var(--gray-400);
+}
+
+.fr-note {
+  font-size: 11px;
+  color: var(--gray-400);
+  margin-top: 12px;
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .media-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 20px;
+  }
+
+  .media-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .media-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .media-feature-title {
+    font-size: 24px;
+  }
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--gray-200);
+  padding: 32px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--gray-400);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { gap: 16px; }
+  .nav-links a { font-size: 11px; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .hero-left { padding: 24px 20px; }
+  .section-nav { grid-template-columns: repeat(3,1fr); }
+  .section-wrap { padding: 20px 20px 60px; }
+  .news-card { grid-template-columns: 1fr; }
+  .research-grid { grid-template-columns: 1fr; }
+  .research-bio-block { padding: 24px; }
+  footer { flex-direction: column; gap: 6px; text-align: center; padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a class="nav-logo" onclick="showPage('start')">Hilke Brockmann</a>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')" id="nav-home">Home</a></li>
+    <li><a onclick="showPage('news')" id="nav-news">News</a></li>
+    <li><a onclick="showPage('research')" id="nav-research">Research</a></li>
+    <li><a onclick="showPage('publications')" id="nav-publications">Publications</a></li>
+    <li><a onclick="showPage('teaching')" id="nav-teaching">Teaching</a></li>
+    <li><a onclick="showPage('people')" id="nav-people">People</a></li>
+    <li><a onclick="showPage('media')" id="nav-media">Media</a></li>
+  </ul>
+</nav>
+
+<!-- START -->
+<div id="page-start" class="page active">
+  <div class="start-grid-bg"></div>
+  <div class="start-glow"></div>
+  <div class="start-content">
+    <div class="start-eyebrow">Sociology · Constructor University Bremen</div>
+    <div class="start-quote">
+      <span class="start-quote-mark">"</span>
+      In self-reflection knowledge for the sake of knowledge attains congruence with the interest in autonomy and responsibility.
+    </div>
+    <div class="start-attribution">Jürgen Habermas · <em>Knowledge and Human Interest</em></div>
+    <div class="start-rule"></div>
+    <button class="enter-btn" onclick="showPage('home')">
+      Enter
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M1 7h12M8 2l5 5-5 5"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<!-- HOME -->
+<div id="page-home" class="page">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-inner">
+        <div class="hero-eyebrow">Professor of Sociology</div>
+        <h1 class="hero-name">Hilke<br>Brockmann</h1>
+        <div class="hero-title">Constructor University Bremen</div>
+
+        <p class="hero-bio">
+          Welcome. I am a German university professor of sociology interested in what matters to people:
+          <strong>happiness</strong>, <strong>inequality</strong>, <strong>new technologies</strong>, and
+          <strong>population dynamics</strong>.
+          <br><br>
+          On the following pages you will find my current research, projects you can join, courses I am teaching,
+          other professional activities, and my media outreach.
+        </p>
+
+        <div class="hero-tags">
+          <span class="hero-tag">Happiness</span>
+          <span class="hero-tag">Inequality</span>
+          <span class="hero-tag">Aging</span>
+          <span class="hero-tag">New Technologies</span>
+          <span class="hero-tag">Population Dynamics</span>
+          <span class="hero-tag">Data Science</span>
+        </div>
+
+        <div class="hero-actions">
+          <button class="hero-cta" onclick="showPage('research')">Explore Research →</button>
+          <a href="javascript:void(0)" class="hero-link" onclick="showPage('publications')">View selected publications</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-photo-area">
+        <div class="hero-photo-shell">
+          <div class="hero-photo-frame">
+            <img src="hilke-brockmann.jpg" alt="Hilke Brockmann">
+            </div>
+          <div class="hero-photo-caption">Professor of Sociology</div>
+        </div>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">25+</div>
+          <div class="hero-stat-label">Years Research</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">2</div>
+          <div class="hero-stat-label">PhD Students</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">2</div>
+          <div class="hero-stat-label">Books Edited</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">4+</div>
+          <div class="hero-stat-label">Key Papers</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-nav">
+    <div class="section-nav-item" onclick="showPage('news')">
+      <span class="sn-icon">📰</span>
+      <div class="sn-label">News</div>
+      <div class="sn-desc">Events &amp; workshops</div>
+    </div>
+    <div class="section-nav-item" onclick="showPage('research')">
+      <span class="sn-icon">🔬</span>
+      <div class="sn-label">Research</div>
+      <div class="sn-desc">Projects &amp; focus areas</div>
+    </div>
+    <div class="section-nav-item" onclick="showPage('publications')">
+      <span class="sn-icon">📄</span>
+      <div class="sn-label">Publications</div>
+      <div class="sn-desc">Papers &amp; books</div>
+    </div>
+    <div class="section-nav-item" onclick="showPage('teaching')">
+      <span class="sn-icon">🎓</span>
+      <div class="sn-label">Teaching</div>
+      <div class="sn-desc">Courses &amp; theses</div>
+    </div>
+    <div class="section-nav-item" onclick="showPage('people')">
+      <span class="sn-icon">👥</span>
+      <div class="sn-label">People</div>
+      <div class="sn-desc">PhD students</div>
+    </div>
+    <div class="section-nav-item" onclick="showPage('media')">
+      <span class="sn-icon">📡</span>
+      <div class="sn-label">Media</div>
+      <div class="sn-desc">Commentary &amp; outreach</div>
+    </div>
+  </div>
+</div>
+
+<!-- NEWS -->
+<div id="page-news" class="page">
+  <div class="section-wrap">
+    <div class="section-head">
+      <h2>News</h2>
+      <span class="section-count">1 event</span>
+    </div>
+
+    <div class="news-card">
+      <div class="news-card-side">
+        <div class="news-tag">Workshop · IJCAI 2026</div>
+        <div>
+          <div class="news-date-big">Aug<br>2026</div>
+          <div class="news-date-label">Bremen, Germany</div>
+        </div>
+      </div>
+      <div class="news-card-body">
+        <div class="news-card-title">Augmented Democracies: How AI Can Empower Political Decision-Making by the People and for the People</div>
+        <div class="news-card-by">Hilke Brockmann &amp; Ivan Yamshchikov · IJCAI 2026</div>
+        <div class="news-card-text">
+          <p>Democratic political regimes are under pressure from declining public trust, polarization, and disinformation, while simultaneously facing external competition from authoritarian systems that increasingly deploy AI for centralized control and persuasion. Recent advances in AI — especially large language models — have created new technical capabilities to support democratic deliberation at scale.</p>
+          <p>A core challenge in democratic theory is the deliberative trilemma: it is difficult to achieve simultaneously broad participation (scalability), high-quality deliberation, and political equality. Recent AI research suggests that purpose-built AI systems may help relax this trilemma — for example by synthesizing common ground across large and diverse groups, structuring argument exchange, or enabling multilingual participation.</p>
+          <p>This workshop brings together researchers from AI, HCI, political science, computational social science, and digital democracy practice to critically assess the state of the art and collaboratively design next-generation AI systems that strengthen democratic decision-making by the people and for the people.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESEARCH -->
+<div id="page-research" class="page">
+  <div class="section-wrap">
+    <div class="section-head">
+      <h2>Research</h2>
+    </div>
+
+    <div class="research-bio-block">
+      <p>I have a multi-disciplinary background in the social sciences. My research focuses on things that matter to people — aging, happiness, inequality, and new data. I usually study large social groups — the elderly, the educated and uneducated, the haves and the have-nots, migrants, and women.</p>
+      <p>New research methodologies shed new light into the motives and behaviors of people and their (un)intended consequences. I use and combine innovative datasets and employ cutting-edge data science models to study when and why people are happy, what drives the (un)acceptance of economic inequalities, what defines successful migration, and how people can better participate politically.</p>
+    </div>
+
+    <div class="research-grid">
+      <div class="research-card">
+        <div class="research-card-num">01</div>
+        <div class="research-card-title">Happiness &amp; Well-Being</div>
+        <div class="research-card-text">Why and when people are happy — across societies, transitions, and inequalities. Combining survey data with new computational methods to understand subjective well-being at scale.</div>
+      </div>
+      <div class="research-card">
+        <div class="research-card-num">02</div>
+        <div class="research-card-title">Inequality &amp; Redistribution</div>
+        <div class="research-card-text">What drives the acceptance or rejection of economic inequalities. How wealth concentration shapes political attitudes, tax compliance, and social trust.</div>
+      </div>
+      <div class="research-card">
+        <div class="research-card-num">03</div>
+        <div class="research-card-title">Migration &amp; Integration</div>
+        <div class="research-card-text">What defines successful migration — for newcomers and for host societies. How gender composition of immigrant flows affects subjective well-being in receiving countries.</div>
+      </div>
+      <div class="research-card">
+        <div class="research-card-num">04</div>
+        <div class="research-card-title">AI &amp; Democracy</div>
+        <div class="research-card-text">How AI and large language models can augment democratic deliberation. Addressing scalability, quality, and equality in political participation — the deliberative trilemma.</div>
+      </div>
+    </div>
+
+    <span class="placeholder-box">📬 For open research positions and student projects, please get in touch via the university.</span>
+  </div>
+</div>
+
+<!-- PUBLICATIONS -->
+<div id="page-publications" class="page">
+  <div class="section-wrap">
+    <div class="section-head">
+      <h2>Publications</h2>
+      <span class="section-count">6 selected works</span>
+    </div>
+
+    <div class="pub-section-label">New · 2026</div>
+    <div class="pub-card">
+      <div class="pub-card-inner">
+        <div class="pub-meta-row">
+          <span class="pub-badge badge-new">New 2026</span>
+          <span class="pub-journal">Journal · 2026</span>
+          <span class="pub-year">2026</span>
+        </div>
+        <div class="pub-title">2026 paper — please paste title &amp; abstract from your signature</div>
+        <div class="pub-authors">Hilke Brockmann et al.</div>
+        <p style="font-size:12px;color:var(--gray-400);font-style:italic;margin-top:4px;">Abstract from your email signature did not come through — share it and I'll add it right away.</p>
+      </div>
+    </div>
+
+    <div class="pub-section-label">Selected Journal Articles</div>
+
+    <div class="pub-card">
+      <div class="pub-card-inner">
+        <div class="pub-meta-row">
+          <span class="pub-badge badge-journal">Journal Article</span>
+          <span class="pub-journal">Journal of Economic Psychology</span>
+          <span class="pub-year">2025</span>
+        </div>
+        <div class="pub-title">Females Welcome! When Immigrants Make the Native Population Happy</div>
+        <div class="pub-authors">Hilke Brockmann &amp; Roger Fernandez-Urbano</div>
+        <button class="abstract-toggle" onclick="toggleAbstract(this)">Read abstract →</button>
+        <div class="abstract-content hidden">Despite growing interest in migration studies, research examining the impact of immigration on the subjective well-being of local populations remains surprisingly limited, often yielding inconclusive and contradictory findings. Notably, the influence of the gender composition of immigrant populations has been overlooked. This study employs the social production function framework to assess how gender-specific immigration patterns affect the well-being of native populations over time, using longitudinal data from Germany and Catalonia (Spain). The study finds that the gender composition of immigrant flows — not just their volume — matters for host-society well-being, with female immigration showing distinct effects from male immigration.</div>
+      </div>
+    </div>
+
+    <div class="pub-card">
+      <div class="pub-card-inner">
+        <div class="pub-meta-row">
+          <span class="pub-badge badge-journal">Journal Article</span>
+          <span class="pub-journal">Journal of Public Policy</span>
+          <span class="pub-year">Vol. 36 · 2016</span>
+        </div>
+        <div class="pub-title">Happy Taxation: Increasing Tax Compliance through Positive Rewards?</div>
+        <div class="pub-authors">Hilke Brockmann, Philipp Genschel &amp; Laura Seelkopf</div>
+        <button class="abstract-toggle" onclick="toggleAbstract(this)">Read abstract →</button>
+        <div class="abstract-content hidden">Can governments increase tax compliance by rewarding honest taxpayers? The authors conducted a controlled laboratory experiment comparing tax compliance under a deterrence baseline with two reward treatments: a donation treatment giving taxpayers a say in the spending purposes of their payments, and a lucky treatment giving taxpayers a small chance of winning a lottery. The donation treatment improved compliance only for female participants; the lottery treatment had no significant effect on anyone. The paper concludes that positive rewards can complement traditional deterrence-based tax collection, though a one-size-fits-all approach is unlikely to succeed.</div>
+      </div>
+    </div>
+
+    <div class="pub-card">
+      <div class="pub-card-inner">
+        <div class="pub-meta-row">
+          <span class="pub-badge badge-journal">Journal Article</span>
+          <span class="pub-journal">Journal of Happiness Studies</span>
+          <span class="pub-year">Vol. 10 · 2009</span>
+        </div>
+        <div class="pub-title">The China Puzzle: Falling Happiness in a Rising Economy</div>
+        <div class="pub-authors">Hilke Brockmann, Jan Delhey, Christian Welzel &amp; Hao Yuan</div>
+        <button class="abstract-toggle" onclick="toggleAbstract(this)">Read abstract →</button>
+        <div class="abstract-content hidden">Over the 1990–2000 decade happiness in China plummeted despite massive improvement in material living standards — a finding that contradicts the notion that income growth at low living standards leads to gains in happiness. The authors explain this puzzle through the concept of "frustrated achievers": income inequality became increasingly skewed towards the upper strata, so that most Chinese experienced a worsening relative financial position. Consequently, financial dissatisfaction rose and became an increasingly important factor in depressing happiness. The paper concludes with speculations about the applicability of these findings to transition economies in general.</div>
+      </div>
+    </div>
+
+    <div class="pub-card">
+      <div class="pub-card-inner">
+        <div class="pub-meta-row">
+          <span class="pub-badge badge-journal">Journal Article</span>
+          <span class="pub-journal">European Sociological Review</span>
+          <span class="pub-year">Vol. 17 · 2001</span>
+        </div>
+        <div class="pub-title">Girls Preferred? Changing Patterns of Sex Preferences in the Two German States</div>
+        <div class="pub-authors">Hilke Brockmann</div>
+        <button class="abstract-toggle" onclick="toggleAbstract(this)">Read abstract →</button>
+        <div class="abstract-content hidden">Taking a longitudinal perspective, this paper shows how sex preferences in Germany changed over time. Based on German cohort data, event-history models reveal a significant boy preference among women born before 1910, a pattern that vanishes among cohorts ten years younger. After the Second World War, West German women never developed a clear sex preference. East German women, by contrast, show a significant preference for girls — a pattern absorbed by the pro-family policy launched by the socialist regime in the 1970s. The paper argues that modernisation does not neutralise sex preferences as often assumed; rather, it may give rise to diverging preferences depending on the specific type of welfare regime.</div>
+      </div>
+    </div>
+
+    <div class="pub-section-label">Books</div>
+
+    <div class="pub-card">
+      <div class="pub-card-inner">
+        <div class="pub-meta-row">
+          <span class="pub-badge badge-book">Book · Editor</span>
+          <span class="pub-journal">Edward Elgar Publishing</span>
+          <span class="pub-year">2024</span>
+        </div>
+        <div class="pub-title">Encyclopedia of Happiness, Quality of Life and Subjective Wellbeing</div>
+        <div class="pub-authors">Edited by Hilke Brockmann &amp; Roger Fernandez-Urbano · 494 pp. · ISBN 978-1-80088-966-8</div>
+        <button class="abstract-toggle" onclick="toggleAbstract(this)">Read abstract →</button>
+        <div class="abstract-content hidden">This comprehensive Encyclopedia delves into the underpinnings, approaches, and recent advancements in happiness and wellbeing research. Organised into five sections — foundational concepts and disciplinary perspectives; determinants and mechanisms of wellbeing; cultural differences in happiness; trending and emerging topics; and data, methods and measures — the volume brings together contributions from over one hundred scholars, including all six editors of the United Nations World Happiness Report. With a focus on emerging research, it addresses trending topics such as animal happiness, big data, genetic engineering, eco-anxiety, war, and working from home.</div>
+      </div>
+    </div>
+
+    <div class="pub-card">
+      <div class="pub-card-inner">
+        <div class="pub-meta-row">
+          <span class="pub-badge badge-book">Book · Editor</span>
+          <span class="pub-journal">Springer · Happiness Studies Book Series</span>
+          <span class="pub-year">2013</span>
+        </div>
+        <div class="pub-title">Human Happiness and the Pursuit of Maximization: Is More Always Better?</div>
+        <div class="pub-authors">Edited by Hilke Brockmann &amp; Jan Delhey · ISBN 978-94-007-6608-2</div>
+        <button class="abstract-toggle" onclick="toggleAbstract(this)">Read abstract →</button>
+        <div class="abstract-content hidden">This book tests the critical potential of happiness research to evaluate contemporary high-performance societies — affluent capitalist societies that emphasise competition and success both institutionally and culturally. Using happiness as a reference point, the volume explores the philosophical and empirical limits of the maximisation rule: Why did the idea of economic maximisation gain such ground in Western thinking? When does maximisation work and when does it fail? When do qualities matter more than quantities? Does maximisation yield a different happiness dividend across species, cultures, and societies?</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TEACHING -->
+<div id="page-teaching" class="page">
+  <div class="section-wrap">
+    <div class="section-head">
+      <h2>Teaching</h2>
+    </div>
+
+    <div class="teaching-hero-box">
+      <p>
+        My teaching explores how digital technologies reshape society, institutions, behavior, and inequality.
+        I teach across areas including <strong>Cybercriminology</strong>, <strong>Digital Society</strong>,
+        and contemporary sociological approaches to technology, crime, and social change.
+      </p>
+    </div>
+
+    <div class="teaching-grid">
+      <div class="teaching-card">
+        <div class="teaching-card-number">01</div>
+        <h3>Cybercriminology</h3>
+        <p>
+          Examining cybercrime, online deviance, digital victimization, surveillance, and the social dynamics of crime in technologically mediated environments.
+        </p>
+      </div>
+
+      <div class="teaching-card">
+        <div class="teaching-card-number">02</div>
+        <h3>Digital Society</h3>
+        <p>
+          Exploring how platforms, data, algorithms, and digital infrastructures shape communication, identity, participation, inequality, and everyday life.
+        </p>
+      </div>
+
+      <div class="teaching-card">
+        <div class="teaching-card-number">03</div>
+        <h3>Research & Methods</h3>
+        <p>
+          Introducing students to sociological analysis through critical reading, empirical inquiry, and the study of contemporary social issues in digital contexts.
+        </p>
+      </div>
+
+      <div class="teaching-card">
+        <div class="teaching-card-number">04</div>
+        <h3>Student Supervision</h3>
+        <p>
+          I welcome student work on cybercrime, digital culture, online harms, digital inequality, technology and society, and related sociological themes.
+        </p>
+      </div>
+    </div>
+
+    <div class="teaching-student-box">
+      <div class="teaching-student-title">For Students</div>
+      <p>
+        If you are interested in writing a thesis under my supervision in areas such as cybercriminology, digital society, technology and social change, online safety, digital inequality, or related topics, I would be happy to hear from you.
+      </p>
+    </div>
+
+    <span class="placeholder-box">📅 Current semester course schedule available via the university portal.</span>
+  </div>
+</div>
+
+
+<!-- PEOPLE -->
+<div id="page-people" class="page">
+  <div class="section-wrap">
+    <div class="section-head">
+      <h2>People</h2>
+      <span class="section-count">2 PhD students</span>
+    </div>
+
+    <p class="people-intro">
+      I supervise doctoral research on migration, meritocratic beliefs, and related questions in contemporary sociology.
+      Current student work engages with themes of mobility, identity, inequality, religion, and social change.
+    </p>
+
+    <div class="people-subtitle">Current doctoral researchers</div>
+
+    <div class="people-grid">
+      <div class="person-card">
+        <div class="person-avatar">SU</div>
+        <div class="person-name">Samitha Udayanga</div>
+        <div class="person-role">PhD Candidate</div>
+        <div class="person-meta">Research area · Migration and social mobility</div>
+        <div class="person-topic">“Migration of the Highly Educated”</div>
+        <a class="person-link" href="https://www.bigsss-bremen.de/people/phd-fellows/samitha-udayanga" target="_blank" rel="noopener">
+          Profile at BIGSSS Bremen →
+        </a>
+      </div>
+
+      <div class="person-card">
+        <div class="person-avatar">IK</div>
+        <div class="person-name">Izudin Karic</div>
+        <div class="person-role">PhD Candidate</div>
+        <div class="person-meta">Research area · Religion, masculinity, and meritocracy</div>
+        <div class="person-topic">“Worldviews and Meritocratic Beliefs of Young Male Muslim Men”</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MEDIA -->
+<div id="page-media" class="page">
+  <div class="section-wrap">
+    <div class="section-head">
+      <h2>Media</h2>
+    </div>
+
+    <div class="media-hero">
+      <div class="media-hero-copy">
+        <div class="media-kicker">Public Outreach · Commentary · Knowledge Transfer</div>
+        <h3 class="media-hero-title">Social science in public conversation</h3>
+        <p class="media-hero-text">
+          This page highlights selected public-facing writing and outreach activities. My academic publications are listed separately under Publications. The materials presented here reflect public engagement and science communication rather than scientific publications.
+        </p>
+      </div>
+      <div class="media-hero-badge">
+        <div class="media-badge-circle">FR</div>
+        <span>Selected outreach</span>
+      </div>
+    </div>
+
+    <div class="media-layout">
+      <div class="media-main">
+        <div class="media-section">
+          <div class="media-section-title">Selected Outreach Writing</div>
+
+          <a class="media-feature-card" href="https://www.fr.de/wirtschaft/gastwirtschaft/warum-wir-fuer-freiheit-und-demokratie-kaempfen-muessen-94119593.html" target="_blank" rel="noopener">
+            <div class="media-feature-top">
+              <div class="fr-logo-box large">FR</div>
+              <div class="media-feature-meta">
+                <span class="media-pill">Frankfurter Rundschau</span>
+                <span class="media-pill light">Gastwirtschaft</span>
+              </div>
+            </div>
+            <h4 class="media-feature-title">Warum wir für Freiheit und Demokratie kämpfen müssen</h4>
+            <p class="media-feature-text">
+              A selected example of public-facing commentary and science communication written for a broader audience.
+            </p>
+            <div class="media-feature-link">Read article ↗</div>
+          </a>
+
+          <div class="media-card-grid">
+            <a class="media-card-modern" href="https://www.fr.de/wirtschaft/gastwirtschaft/" target="_blank" rel="noopener">
+              <div class="media-card-top">
+                <div class="fr-logo-box">FR</div>
+                <span class="media-card-tag">Archive</span>
+              </div>
+              <div class="media-card-title-modern">Selected public commentary and outreach writing</div>
+              <div class="media-card-text-modern">
+                Browse public-facing columns and outreach contributions published in the Frankfurter Rundschau.
+              </div>
+              <div class="media-card-arrow">↗</div>
+            </a>
+
+            <div class="media-card-modern static">
+              <div class="media-card-top">
+                <div class="media-icon-box">✦</div>
+                <span class="media-card-tag">Topics</span>
+              </div>
+              <div class="media-card-title-modern">Themes in public engagement</div>
+              <div class="media-topic-list">
+                <span>Happiness Research</span>
+                <span>Social Inequality</span>
+                <span>Migration</span>
+                <span>Digital Society</span>
+                <span>Science Communication</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="fr-note">
+            These items are included as examples of public outreach and science communication. Scientific papers and other academic publications are listed separately under Publications.
+          </p>
+        </div>
+      </div>
+
+      <aside class="media-side">
+        <div class="media-side-card">
+          <div class="media-section-title">Expertise</div>
+          <p class="media-side-text">
+            I am available for public-facing commentary and knowledge exchange on happiness research, social inequality, migration, digital society, and the sociology of new technologies.
+          </p>
+        </div>
+
+        <div class="media-side-card">
+          <div class="media-section-title">Scope of this page</div>
+          <p class="media-side-text">
+            This section presents selected outreach and opinion contributions intended for broader public audiences. Peer-reviewed articles, edited volumes, and other scientific publications are listed under Publications.
+          </p>
+        </div>
+
+        <div class="media-side-card contact-card-modern">
+          <div class="media-section-title">Contact</div>
+          <a class="contact-modern __cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="96fef4e4f9f5fdfbf7f8f8d6f5f9f8e5e2e4e3f5e2f9e4b8e3f8ffe0f3e4e5ffe2ef">
+            ✉ <span>[email&#160;protected]</span>
+          </a>
+          <div class="contact-sub">Constructor University Bremen</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+
+<footer>
+  <span>&copy; 2026 Prof. Dr. Hilke Brockmann · Constructor University Bremen</span>
+  <span>All rights reserved</span>
+</footer>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+
+  document.getElementById('page-' + id).classList.add('active');
+
+  const nav = document.getElementById('nav-' + id);
+  if (nav) nav.classList.add('active');
+
+  window.scrollTo(0, 0);
+}
+
+function toggleAbstract(btn) {
+  const c = btn.nextElementSibling;
+  const hidden = c.classList.toggle('hidden');
+  btn.textContent = hidden ? 'Read abstract →' : 'Close abstract ↑';
+}
+</script>
+</body>
+</html>
