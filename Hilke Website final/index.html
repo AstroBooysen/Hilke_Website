@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hilke Brockmann — Professor of Sociology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+
+/* ── RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+/* ── TOKENS ── */
+:root {
+  --bg:        #fff;
+  --ink:       #191817;
+  --muted:     #7a6a58;
+  --accent:    #b77a4c;
+  --rule:      #cbbfa8;
+  --card-bg:   #d9cbb7;
+  --warm-card: #d0c2ac;
+  --dark-bg:   #0A2A4A;
+  --serif:     'EB Garamond', Georgia, serif;
+  --sans:      'Jost', system-ui, sans-serif;
+}
+
+/* ── BASE ── */
+body {
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse at 80% 10%, rgba(180,140,100,.13) 0%, transparent 60%),
+    radial-gradient(ellipse at 10% 90%, rgba(140,100,70,.10) 0%, transparent 55%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .85rem 2.5rem;
+  background-color: #0A2A4A;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+.nav-name {
+  font-family: var(--serif); font-size: 1.6rem;
+  color: var(--bg); text-decoration: none; flex-shrink: 0;
+}
+.nav-links {
+  display: flex; gap: 1.8rem;
+  list-style: none; align-items: center;
+}
+.nav-links a {
+  font-family: var(--sans); font-size: .68rem; font-weight: 500;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--bg); text-decoration: none;
+  padding-bottom: 2px; border-bottom: 1.5px solid transparent;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links a.active { color: var(--accent); border-bottom-color: var(--accent); }
+.nav-cv {
+  font-family: var(--sans); font-size: .68rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--bg); border: 1px solid var(--bg);
+  border-radius: 999px; padding: .3rem .9rem;
+  text-decoration: none; transition: background .2s, color .2s;
+  white-space: nowrap;
+}
+.nav-cv:hover { background: var(--accent); color: #2a9c5b; }
+.nav-toggle {
+  display: none; background: none; border: none;
+  cursor: pointer; padding: 4px;
+}
+.nav-toggle span {
+  display: block; width: 22px; height: 1.5px;
+  background: var(--ink); margin: 5px 0;
+}
+
+/* ── LAYOUT ── */
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
+
+/* ── SECTION COMMONS ── */
+.section-sup {
+  font-family: var(--sans); font-size: .68rem; font-weight: 500;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: .7rem;
+}
+.section-title {
+  font-family: var(--serif); font-size: clamp(1.9rem, 3vw, 2.8rem);
+  font-weight: 400; line-height: 1.1; margin-bottom: 1.1rem;
+}
+.section-intro {
+  font-family: var(--serif); font-size: 1rem; line-height: 1.8;
+  color: var(--ink); max-width: 68ch; margin-bottom: 3rem;
+}
+
+/* ── ABOUT ── */
+#about { padding: 10rem 0 6rem; }
+.about-grid {
+  display: grid; grid-template-columns: 1fr 300px;
+  gap: 5rem; align-items: start;
+}
+.about-label {
+  font-family: var(--sans); font-size: .68rem; font-weight: 500;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1.3rem;
+}
+.about-heading {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+  font-weight: 400; line-height: 1.08; margin-bottom: 2rem;
+}
+.about-heading em { font-style: italic; color: var(--accent); }
+.about-divider {
+  width: 40px; height: 2px;
+  background: var(--accent); margin-bottom: 2rem;
+}
+.about-bio {
+  font-family: var(--serif); font-size: 1.1rem;
+  line-height: 1.85; color: var(--ink);
+}
+.about-bio p + p { margin-top: 1.4rem; }
+.about-actions {
+  display: flex; gap: 1rem; align-items: center;
+  margin-top: 2.5rem; flex-wrap: wrap;
+}
+.btn-cv {
+  font-family: var(--sans); font-size: .73rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
+  background: var(--accent); color: #fff;
+  padding: .65rem 1.6rem; border-radius: 999px;
+  text-decoration: none; display: inline-flex; align-items: center; gap: .5rem;
+  transition: background .2s, transform .15s;
+}
+.btn-cv:hover { background: #7a3d24; transform: translateY(-1px); }
+.btn-scholar {
+  font-family: var(--sans); font-size: .73rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
+  background: transparent; color: var(--muted);
+  padding: .65rem 1.6rem; border-radius: 999px;
+  border: 1px solid var(--rule); text-decoration: none;
+  transition: border-color .2s, color .2s;
+}
+.btn-scholar:hover { border-color: var(--accent); color: var(--accent); }
+.about-tags {
+  display: flex; flex-wrap: wrap;
+  gap: .5rem; margin-top: 0,1rem;
+}
+.tag {
+  font-family: var(--sans); font-size: .72rem; font-weight: 400;
+  color: var(--muted); border: 1px solid var(--rule);
+  border-radius: 999px; padding: .28rem .85rem;
+  transition: border-color .2s, color .2s;
+}
+.tag:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Photo */
+.about-right {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 1rem;
+}
+.hb-card {
+  width: 100%; aspect-ratio: 3/4;
+  background: #c9baa6; border-radius: 4px;
+  overflow: hidden; position: relative;
+  box-shadow: 0 8px 32px rgba(44,34,24,.12);
+}
+.hb-card img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top; display: block;
+}
+.hb-card-placeholder {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 5.5rem; font-weight: 400;
+  color: #b5a898; letter-spacing: .05em; user-select: none;
+}
+.hb-caption {
+  font-family: var(--sans); font-size: .72rem;
+  color: var(--muted); text-align: center; line-height: 1.6;
+}
+.social-links { display: flex; gap: .8rem; }
+.social-links a {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--card-bg); border: 1px solid var(--rule);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); text-decoration: none;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.social-links a:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.social-links svg { width: 14px; height: 14px; fill: currentColor; }
+
+/* ── PUBLICATIONS ── */
+#publications { padding: 5rem 0; border-top: 1px solid var(--rule); }
+.pub-item {
+  display: grid; grid-template-columns: 72px 1fr;
+  gap: 0 2.8rem; padding: 2rem 1rem 2rem 0;
+  border-bottom: 1px solid var(--rule);
+  transition: background .18s, padding-left .18s;
+  cursor: default;
+}
+.pub-item:first-child { border-top: 1px solid var(--rule); }
+.pub-item:hover { background: rgba(139,76,47,.04); padding-left: .8rem; }
+.pub-year {
+  font-family: var(--sans); font-size: .82rem; font-weight: 400;
+  color: var(--accent); padding-top: .2rem; letter-spacing: .02em;
+}
+.pub-type {
+  font-family: var(--sans); font-size: .64rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: .4rem;
+}
+.pub-title {
+  font-family: var(--serif); font-size: 1.12rem; font-weight: 400;
+  line-height: 1.3; margin-bottom: .3rem;
+}
+.pub-venue {
+  font-family: var(--serif); font-style: italic;
+  font-size: .88rem; color: var(--muted); margin-bottom: .65rem;
+}
+.pub-blurb {
+  font-family: var(--serif); font-style: italic;
+  font-size: .87rem; line-height: 1.7; color: var(--muted);
+}
+
+/* ── PROJECTS ── */
+#projects { padding: 5rem 0; border-top: 1px solid var(--dark-bg); }
+.projects-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+}
+.project-card {
+  background: var(--dark-bg); border-radius: 6px;
+  padding: 2.2rem 2.2rem 2rem;
+  display: flex; flex-direction: column;
+  transition: box-shadow .2s;
+}
+.project-card:hover { box-shadow: 0 4px 24px rgba(240, 239, 239, 0.1); }
+.project-card.warm { background: var(--dark-bg); }
+.project-card-top {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: .9rem;
+}
+.project-theme {
+  font-family: var(--sans); font-size: .64rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--bg);
+}
+.project-num {
+  font-family: var(--sans); font-size: .8rem;
+  color: #ffffff; letter-spacing: .05em;
+}
+.project-title {
+  font-family: var(--serif); font-size: 1.2rem;
+  font-weight: 400; line-height: 1.25; margin-bottom: 1rem;  color: var(--bg);
+}
+.project-desc {
+  font-family: var(--serif); font-size: .9rem;
+  line-height: 1.78; color: var(--bg); flex: 1;
+}
+.project-note {
+  margin-top: 1.3rem; padding-top: 1.1rem;
+  border-top: 1px solid rgba(0,0,0,.1);
+  font-family: var(--serif); font-size: .88rem;
+  line-height: 1.65; color: var(--bg);
+}
+.project-note strong { color: var(--bg); font-weight: 500; }
+.project-link {
+  display: inline-block; margin-top: .8rem;
+  font-family: var(--sans); font-size: .73rem; font-weight: 500;
+  letter-spacing: .05em; color: var(--bg); text-decoration: none;
+}
+.project-link:hover { text-decoration: underline; }
+
+/* ── OUTREACH ── */
+#outreach { padding: 5rem 0 0; border-top: 1px solid var(--rule); }
+.outreach-cols {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 3rem; margin-bottom: 3rem;
+}
+.outreach-icon {
+  width: 36px; height: 36px; background: var(--card-bg);
+  border-radius: 50%; display: flex; align-items: center;
+  justify-content: center; margin-bottom: 1.1rem;
+}
+.outreach-icon svg {
+  width: 15px; height: 15px;
+  stroke: var(--muted); fill: none; stroke-width: 1.5;
+}
+.outreach-heading {
+  font-family: var(--serif); font-size: 1.12rem;
+  font-weight: 400; margin-bottom: .8rem;
+}
+.outreach-text {
+  font-family: var(--serif); font-size: .9rem;
+  line-height: 1.78; color: var(--ink);
+}
+.outreach-text em { font-style: italic; }
+.media-rule {
+  border: none; border-top: 1px solid var(--rule); margin-bottom: 2rem;
+}
+.media-tags {
+  display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 3rem;
+}
+.media-tag {
+  font-family: var(--sans); font-size: .72rem; color: var(--muted);
+  border: 1px solid var(--rule); border-radius: 999px;
+  padding: .28rem .85rem;
+}
+
+/* ── CONTACT BANNER ── */
+.contact-banner {
+  background: var(--dark-bg); border-radius: 6px;
+  padding: 2.4rem 2.8rem; margin-bottom: 4rem;
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 2rem;
+}
+.contact-banner-title {
+  font-family: var(--sans); font-size: .88rem; font-weight: 500;
+  color: #fff; margin-bottom: .4rem; letter-spacing: .01em;
+}
+.contact-banner-sub {
+  font-family: var(--serif); font-size: .9rem;
+  color: #fff; line-height: 1.6;
+}
+.contact-banner-email {
+  font-family: var(--serif); font-size: 1.05rem;
+  color: #fff; text-decoration: none;
+  white-space: nowrap; flex-shrink: 0;
+  border-bottom: 1px solid rgba(212,149,110,.35);
+  padding-bottom: 2px; transition: color .2s, border-color .2s;
+}
+.contact-banner-email:hover { color: #e8b08a; border-color: #e8b08a; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--info-bg, #0A2A4A);
+  padding: 3rem 2.5rem 2rem;
+}
+.footer-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  gap: 2rem; align-items: start;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #f9f8f6;
+}
+.footer-name {
+  font-family: var(--serif); font-size: 1.1rem;
+  color: #f6f1f1; margin-bottom: .3rem;
+}
+.footer-inst {
+  font-family: var(--sans); font-size: .72rem;
+  color: #f8f5f3; letter-spacing: .04em; line-height: 1.6;
+}
+.footer-social { display: flex; gap: .6rem; margin-top: .9rem; }
+.footer-social a {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: #f2f0ef; border: 1px solid #f5f4f3;
+  display: flex; align-items: center; justify-content: center;
+  color: #e38e3a; text-decoration: none;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.footer-social a:hover {
+  background: var(--green); border-color: var(--green); color: #fff;
+}
+.footer-social svg { width: 13px; height: 13px; fill: currentColor; }
+.footer-nav { text-align: center; }
+.footer-nav-title {
+  font-family: var(--sans); font-size: .65rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: #faf9f7; margin-bottom: .9rem;
+}
+.footer-nav ul { list-style: none; }
+.footer-nav li { margin-bottom: .45rem; }
+.footer-nav a {
+  font-family: var(--sans); font-size: .75rem;
+  color: #f5f3f1; text-decoration: none; transition: color .2s;
+}
+.footer-nav a:hover { color: #f9f5f3; }
+.footer-contact { text-align: right; }
+.footer-contact-title {
+  font-family: var(--sans); font-size: .65rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: #faf8f7; margin-bottom: .9rem;
+}
+.footer-contact p {
+  font-family: var(--sans); font-size: .78rem;
+  color: #fffefe; line-height: 1.7;
+}
+.footer-contact a { color: #f7f6f5; text-decoration: none; }
+.footer-contact a:hover { color: #fdfbfa; }
+.footer-bottom {
+  max-width: 1100px; margin: 1.5rem auto 0;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-copy {
+  font-family: var(--sans); font-size: .68rem;
+  color: #fbf8f4; letter-spacing: .03em;
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0; transform: translateY(14px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-right {
+    flex-direction: row; align-items: flex-start;
+    justify-content: flex-start; gap: 1.5rem;
+  }
+  .hb-card { width: 160px; flex-shrink: 0; }
+  .hb-caption, .social-links { display: none; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .outreach-cols { grid-template-columns: 1fr; gap: 2rem; }
+  .contact-banner { flex-direction: column; align-items: flex-start; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .footer-contact { text-align: left; }
+  .footer-bottom { flex-direction: column; gap: .5rem; }
+}
+@media (max-width: 640px) {
+  .wrap { padding: 0 1.2rem; }
+  nav { padding: .8rem 1.2rem; }
+  .nav-links {
+    display: none; flex-direction: column;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: #faf4f4;
+    padding: 1.2rem 1.5rem; gap: 1rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: block; }
+  .nav-cv { display: none; }
+  .about-right { display: none; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="main-nav">
+  <a href="#about" class="nav-name">Hilke Brockmann</a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about"        data-section="about">About</a></li>
+    <li><a href="#publications" data-section="publications">Publications</a></li>
+    <li><a href="#projects"     data-section="projects">Projects</a></li>
+    <li><a href="#outreach"     data-section="outreach">Outreach</a></li>
+  </ul>
+  <!-- Replace href with actual CV PDF path -->
+  <a href="CV_2026.pdf" class="nav-cv" download>↓ Download CV</a>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+
+      <div class="about-left">
+        <p class="about-label">Professor of Sociology · Constructor University Bremen</p>
+        <h1 class="about-heading">Welcome<br>I am <em>Hilke<br>Brockmann</em></h1>
+        <div class="about-divider"></div>
+        <div class="about-bio">
+          <p>I study the questions that keep us up at night: Will I be happy? Will I be treated fairly? What happens when we grow old? And what does the digital revolution mean for all of us? As a sociologist, I approach these profoundly human concerns with rigorous empirical methods — and a genuine conviction that science should matter beyond the academy.</p>
+          <p>For over two decades I have been a professor at Constructor University Bremen, with research stays at Harvard, the European University Institute in Florence, and institutions across Africa and Asia. My work has tracked happiness trajectories across entire lifetimes, examined why immigrants often report higher wellbeing than the people around them, and revealed the hidden inequalities shaping women's careers. Most recently, I am pushing into new territory: using AI-assisted text analytics, digital trace data, and computational methods to understand how we age, how societies polarize, and how technology reshapes the way we live and feel.</p>
+          <p>Communicating research is not a side project — it is central to what I do. I collaborate across disciplines and continents, supervise a lively group of PhD students, and bring sociological thinking into public debate, policy conversations, and the media whenever I can.</p>
+        </div>
+        <div class="about-actions">
+         
+         
+        </div>
+        <div class="about-tags">
+          <span class="tag">Happiness &amp; Wellbeing</span>
+          <span class="tag">Aging Societies</span>
+          <span class="tag">Inequality</span>
+          <span class="tag">AI &amp; Digital Society</span>
+          <span class="tag">Immigration</span>
+          <span class="tag">End-of-Life</span>
+          <span class="tag">Computational Social Science</span>
+        </div>
+      </div>
+
+      <div class="about-right">
+        <div class="hb-card">
+          <!-- Replace src="" with photo filename, e.g. src="brockmann.jpg" -->
+          <img src="HB2023.jpg" alt="Prof. Dr. Hilke Brockmann" id="profile-photo"
+               onerror="this.style.display='none'; document.getElementById('hb-fallback').style.display='flex';"
+               onload="document.getElementById('hb-fallback').style.display='none';"/>
+          <div class="hb-card-placeholder" id="hb-fallback">HB</div>
+        </div>
+        <p class="hb-caption">Prof. Dr. Hilke Brockmann<br>Constructor University Bremen</p>
+        <div class="social-links">
+          <!-- Replace href values with actual profile URLs -->
+          <a href="https://scholar.google.com/citations?user=PS_BqiEAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" title="Google Scholar">
+            <svg viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
+          </a>
+          <a href="https://www.researchgate.net" target="_blank" rel="noopener" title="ResearchGate">
+            <svg viewBox="0 0 24 24"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a12.44 12.44 0 0 0-.28 1.257 85.88 85.88 0 0 0-.117 1.025c-.044.463-.073.836-.073 1.096 0 .375.09.668.27.88.18.212.43.32.747.32.597 0 .956-.347 1.082-1.04L18 5.45c.082-.465.154-.815.216-1.05.062-.235.145-.403.248-.504.103-.1.253-.152.45-.152.167 0 .31.051.43.152.12.1.18.252.18.455a6.8 6.8 0 0 1-.073.832c-.052.37-.1.695-.14.972-.04.278-.06.485-.06.622 0 .495.177.93.53 1.302.354.374.81.56 1.365.56.567 0 1.04-.175 1.414-.524.374-.35.562-.8.562-1.35 0-.553-.188-1.017-.562-1.39C21.786.7 21.31.5 20.74.5c-.15 0-.3.015-.448.043C19.793.125 19.18 0 18.586 0zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.23 17.65h-2.11v-5.484h-2.48v5.484H10.53v-5.484H8.05V9.776h2.48V7.295c0-2.003 1.22-3.096 3.012-3.096.856 0 1.592.064 1.807.092v2.095h-1.24c-.973 0-1.16.463-1.16 1.14v1.25h2.32l-.302 2.39h-2.018v5.484z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/hilkebrockmann/" target="_blank" rel="noopener" title="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── PUBLICATIONS ── -->
+<section id="publications">
+  <div class="wrap">
+    <p class="section-sup">Selected Publications</p>
+    <h2 class="section-title">Books &amp; Papers</h2>
+    <p class="section-intro">A curated selection of research across the themes of happiness, inequality, aging, and digital society — chosen for intellectual impact, originality, and accessibility.</p>
+
+    <div class="pub-list">
+
+      <div class="pub-item reveal">
+        <div class="pub-year">2026</div>
+        <div>
+          <p class="pub-type">Journal Article</p>
+          <p class="pub-title">Females Welcome! When immigrants make the local population happy</p>
+          <p class="pub-venue">Journal of Economic Psychology, 113 (with R. Fernandez-Urbano)</p>
+          <p class="pub-blurb">A striking finding: the arrival of immigrant women boosts subjective wellbeing in host communities. A genuinely surprising result that reframes public debates around migration and social cohesion.</p>
+        </div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-year">2025</div>
+        <div>
+          <p class="pub-type">Journal Article</p>
+          <p class="pub-title">The Pursuit of Happiness at the End of Life: Research on Connection, Care, and Meaning in Hospice Settings</p>
+          <p class="pub-venue">The Mind, 2</p>
+          <p class="pub-blurb">One of the first rigorous empirical studies of what actually makes people happy in their final months — an urgent question for aging societies everywhere. This paper opened a new research program.</p>
+        </div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-year">2024</div>
+        <div>
+          <p class="pub-type">Edited Volume</p>
+          <p class="pub-title">Encyclopedia of Happiness, Quality of Life, and Subjective Wellbeing</p>
+          <p class="pub-venue">Edward Elgar, Cheltenham (edited with R. Fernandez-Urbano)</p>
+          <p class="pub-blurb">The field's most comprehensive reference work — a landmark synthesis co-edited by Brockmann that brings together the world's leading scholars on wellbeing research. Essential for researchers, policymakers, and curious readers alike.</p>
+        </div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-year">2018</div>
+        <div>
+          <p class="pub-type">Journal Article</p>
+          <p class="pub-title">Why managerial women are less happy than managerial men</p>
+          <p class="pub-venue">Journal of Happiness Studies, 19/3: 755–779 (with A.M. Koch, A. Diederich, C. Edling)</p>
+          <p class="pub-blurb">A widely cited study that puts data behind a phenomenon many women recognize — and opens hard questions about the real costs of professional success. Accessible, provocative, and policy-relevant.</p>
+        </div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-year">2016</div>
+        <div>
+          <p class="pub-type">Journal Article</p>
+          <p class="pub-title">Happy taxation: Increasing tax compliance through positive rewards?</p>
+          <p class="pub-venue">Journal of Public Policy, 36/3: 381–406 (with L. Seelkopf, P. Genschel)</p>
+          <p class="pub-blurb">A beautifully unexpected research question — can reward-based nudges replace penalties in tax compliance? This paper bridges happiness research and public policy in a way that genuinely surprised policymakers.</p>
+        </div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-year">2013</div>
+        <div>
+          <p class="pub-type">Edited Volume</p>
+          <p class="pub-title">Is More Always Better? Human Happiness and the Pursuit of Maximization</p>
+          <p class="pub-venue">Springer, Heidelberg &amp; New York (edited with J. Delhey)</p>
+          <p class="pub-blurb">A thought-provoking interdisciplinary inquiry into the limits of "more is better" — from wealth to ambition to information. One of the books that established Brockmann as a leading voice in happiness research.</p>
+        </div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-year">2009</div>
+        <div>
+          <p class="pub-type">Journal Article</p>
+          <p class="pub-title">The China puzzle: Falling happiness in a rising economy</p>
+          <p class="pub-venue">Journal of Happiness Studies, 10: 387–405 (with J. Delhey, C. Welzel)</p>
+          <p class="pub-blurb">A landmark paper: economic growth does not automatically produce wellbeing. This counterintuitive finding for China resonated globally and remains one of the field's most-cited studies on the happiness–GDP paradox.</p>
+        </div>
+      </div>
+
+      <div class="pub-item reveal">
+        <div class="pub-year">2004</div>
+        <div>
+          <p class="pub-type">Journal Article</p>
+          <p class="pub-title">Love and death in Germany: The marital biography and its impact on mortality</p>
+          <p class="pub-venue">Journal of Marriage &amp; the Family, 66/3: 567–581 (with T. Klein)</p>
+          <p class="pub-blurb">An early, award-winning study using large longitudinal data to show that intimate relationships profoundly shape how long we live — still widely read, still cited, still important.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── PROJECTS ── -->
+<section id="projects">
+  <div class="wrap">
+    <p class="section-sup">Current Research</p>
+    <h2 class="section-title">Projects</h2>
+    <p class="section-intro">Four research programs — each tackling a question that matters to individuals and societies, and each pushing the boundaries of sociological methods.</p>
+
+    <div class="projects-grid">
+
+      <div class="project-card reveal">
+        <div class="project-card-top">
+          <span class="project-theme">Aging &amp; Wellbeing</span>
+          <span class="project-num">01</span>
+        </div>
+        <h3 class="project-title">Happiness at the End of Life</h3>
+        <p class="project-desc">What does happiness mean when life is drawing to a close — and how can societies help people experience dignity, connection, and meaning rather than fear? This project combines life-course survey data and administrative health records with digital trace data and NLP-based text analysis to map how emotional wellbeing, life satisfaction, and social relationships evolve in people's final years. In close collaboration with palliative-care clinicians, we translate findings directly into recommendations for end-of-life care and social support policy.</p>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-card-top">
+          <span class="project-theme">AI &amp; Society</span>
+          <span class="project-num">02</span>
+        </div>
+        <h3 class="project-title">Gender-Inclusive AI</h3>
+        <p class="project-desc">AI is not neutral — it reflects the values, priorities, and blind spots of the people who build it. Since women remain dramatically underrepresented in AI development, this project asks: What happens when female perspectives and care-oriented principles are designed into AI systems from the start? Using algorithmic auditing, survey experiments, and behavioral data, we test whether gender-inclusive design produces AI that works better for everyone. Embedded in an international collaboration spanning Estonia, France, and Sweden.</p>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-card-top">
+          <span class="project-theme">Immigration &amp; Integration</span>
+          <span class="project-num">03</span>
+        </div>
+        <h3 class="project-title">Technology, Integration, and Immigrant Wellbeing</h3>
+        <p class="project-desc">Can digital tools make integration faster, fairer, and more humane? This comparative project examines how AI-driven job matching, digital credential recognition, and e-government services affect immigrants' employment outcomes, occupational mobility, and subjective wellbeing — in Europe and, via an Australian collaboration, across radically different policy regimes. Using linked employer–employee datasets and machine-learning methods, we identify the technological conditions that genuinely support a better life after migration.</p>
+      </div>
+
+      <div class="project-card warm reveal">
+        <div class="project-card-top">
+          <span class="project-theme">Gender &amp; Career — Ongoing</span>
+          <span class="project-num">04</span>
+        </div>
+        <h3 class="project-title">Discrimination of Mothers: Career, Care, and the Motherhood Penalty</h3>
+        <p class="project-desc">Becoming a mother remains one of the most consequential career events a woman can experience — and one of the most consequential for her happiness. This long-running research program uses longitudinal data to trace how the transition to motherhood affects employment trajectories, earnings, wellbeing, and political representation. We document the structural mechanisms behind the "motherhood penalty" — and look for the policies and workplace cultures that actually make a difference.</p>
+        <div class="project-note">
+          <strong>Are you a mother who has experienced career discrimination?</strong> I am always interested in hearing from women whose experiences can inform this research. Please feel free to reach out — your story matters.
+          <br/><a href="#outreach" class="project-link">Get in touch →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── OUTREACH ── -->
+<section id="outreach">
+  <div class="wrap">
+    <p class="section-sup">Beyond the University</p>
+    <h2 class="section-title">Outreach &amp; Impact</h2>
+    <p class="section-intro">Good research deserves a wide audience. I actively bring sociological findings into public debate, policy advice, and the media — because the questions I study belong to everyone.</p>
+
+    <div class="outreach-cols">
+      <div class="outreach-col reveal">
+        <div class="outreach-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><line x1="7" y1="8" x2="17" y2="8"/><line x1="7" y1="12" x2="13" y2="12"/></svg>
+        </div>
+        <h3 class="outreach-heading">Media &amp; Public Debate</h3>
+        <p class="outreach-text">From the <em>Frankfurter Rundschau</em> to <em>Die ZEIT</em>, from the <em>Economist</em> to ZDF and ARTE, my research on happiness, inequality, and aging has reached hundreds of thousands of readers and viewers. I contribute a regular column to the <em>Frankfurter Rundschau</em> (Gastwirtschaft, since 2019) and welcome journalists seeking serious sociological perspective.</p>
+      </div>
+      <div class="outreach-col reveal">
+        <div class="outreach-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M5 20c0-4 3.1-7 7-7s7 3 7 7"/></svg>
+        </div>
+        <h3 class="outreach-heading">Keynotes &amp; Public Lectures</h3>
+        <p class="outreach-text">Invited talks at Harvard's Center for European Studies, the European University Institute, McKinsey, the Sparkassenverband, and the Studienstiftung des deutschen Volkes — as well as at international sociology conferences across North America, Europe, and Asia.</p>
+      </div>
+      <div class="outreach-col reveal">
+        <div class="outreach-icon">
+          <svg viewBox="0 0 24 24"><polygon points="12,4 21,20 3,20"/></svg>
+        </div>
+        <h3 class="outreach-heading">Policy Consulting &amp; Advisory</h3>
+        <p class="outreach-text">Advisory work for the Coca-Cola Happiness Institute in Berlin, expert consultation for hospitals and healthcare organizations on quality assurance and age-related policy. Member, editorial board of the <em>Journal of Happiness Studies</em>; reviewer for leading journals in sociology, public health, and social policy.</p>
+      </div>
+    </div>
+
+    <hr class="media-rule"/>
+    <div class="media-tags">
+      <span class="media-tag">FAZ</span>
+      <span class="media-tag">Die ZEIT</span>
+      <span class="media-tag">Der Spiegel</span>
+      <span class="media-tag">Frankfurter Rundschau</span>
+      <span class="media-tag">The Economist</span>
+      <span class="media-tag">ZDF</span>
+      <span class="media-tag">ARD</span>
+      <span class="media-tag">ARTE</span>
+      <span class="media-tag">3sat</span>
+      <span class="media-tag">Deutschlandfunk</span>
+      <span class="media-tag">NDR</span>
+      <span class="media-tag">Radio Bremen</span>
+    </div>
+
+    <div class="contact-banner reveal">
+      <div>
+        <p class="contact-banner-title">Interested in collaborating, consulting, or inviting me to speak?</p>
+        <p class="contact-banner-sub">I welcome inquiries from researchers, journalists, organizations, and institutions — whether for a single conversation or a longer collaboration.</p>
+      </div>
+      <a href="mailto:hbrockmann@constructor-university.de" class="contact-banner-email">
+        hbrockmann@constructor-university.de
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+
+    <div class="footer-brand">
+      <p class="footer-name">Prof. Dr. Hilke Brockmann</p>
+      <p class="footer-inst">Constructor University Bremen<br>Campus Ring 1 · 28759 Bremen · Germany</p>
+      <div class="footer-social">
+        <a href="https://scholar.google.com/citations?user=PS_BqiEAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" title="Google Scholar">
+          <svg viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
+        </a>
+        <a href="https://www.researchgate.net" target="_blank" rel="noopener" title="ResearchGate">
+          <svg viewBox="0 0 24 24"><path d="M19.586 0c-.818 0-1.508.19-2.073.565-.563.377-.97.936-1.213 1.68a12.44 12.44 0 0 0-.28 1.257 85.88 85.88 0 0 0-.117 1.025c-.044.463-.073.836-.073 1.096 0 .375.09.668.27.88.18.212.43.32.747.32.597 0 .956-.347 1.082-1.04L18 5.45c.082-.465.154-.815.216-1.05.062-.235.145-.403.248-.504.103-.1.253-.152.45-.152.167 0 .31.051.43.152.12.1.18.252.18.455a6.8 6.8 0 0 1-.073.832c-.052.37-.1.695-.14.972-.04.278-.06.485-.06.622 0 .495.177.93.53 1.302.354.374.81.56 1.365.56.567 0 1.04-.175 1.414-.524.374-.35.562-.8.562-1.35 0-.553-.188-1.017-.562-1.39C21.786.7 21.31.5 20.74.5c-.15 0-.3.015-.448.043C19.793.125 19.18 0 18.586 0zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.23 17.65h-2.11v-5.484h-2.48v5.484H10.53v-5.484H8.05V9.776h2.48V7.295c0-2.003 1.22-3.096 3.012-3.096.856 0 1.592.064 1.807.092v2.095h-1.24c-.973 0-1.16.463-1.16 1.14v1.25h2.32l-.302 2.39h-2.018v5.484z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/hilkebrockmann/" target="_blank" rel="noopener" title="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-nav">
+      <p class="footer-nav-title">Navigate</p>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#outreach">Outreach</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-contact">
+      <p class="footer-contact-title">Contact</p>
+      <p>
+        <a href="mailto:hbrockmann@constructor-university.de">hbrockmann@constructor-university.de</a><br>
+        +49 421 200 34 21<br><br>
+        Constructor University Bremen<br>
+        School of Social Sciences<br>
+        Campus Ring 1 · 28759 Bremen
+      </p>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Hilke Brockmann · All rights reserved</p>
+    <p class="footer-copy">Professor of Sociology · Constructor University Bremen</p>
+  </div>
+</footer>
+
+
+<script>
+// Scroll reveal
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), (e.target.dataset.i || 0) * 70);
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.dataset.i = i % 5;
+  revealObs.observe(el);
+});
+
+// Scroll-spy nav
+const sections  = document.querySelectorAll('section[id]');
+const navLinks  = document.querySelectorAll('.nav-links a[data-section]');
+const spyObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(a => a.classList.remove('active'));
+      const active = document.querySelector(`.nav-links a[data-section="${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.35 });
+sections.forEach(s => spyObs.observe(s));
+
+// Mobile nav toggle
+document.getElementById('nav-toggle').addEventListener('click', () => {
+  document.getElementById('nav-links').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('nav-links').classList.remove('open');
+  });
+});
+</script>
+
+</body>
+</html>
